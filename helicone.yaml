@@ -174,24 +174,24 @@ spec:
             - name: VERCEL_ENV
               value: "development"
 
-#         volumeMounts:
-#           - name: helicone-data-postgresql
-#             mountPath: /var/lib/postgresql/17/main
-#           - name: helicone-data-clickhouse
-#             mountPath: /var/lib/clickhouse
-#           - name: helicone-data-minio
-#             mountPath: /data
+          volumeMounts:
+            - name: helicone-data-postgresql
+              mountPath: /var/lib/postgresql/17/main
+            - name: helicone-data-clickhouse
+              mountPath: /var/lib/clickhouse
+            - name: helicone-data-minio
+              mountPath: /data
 
-#     volumes:
-#       - name: helicone-data-postgresql
-#         persistentVolumeClaim:
-#           claimName: helicone-data-postgresql-pvc
-#       - name: helicone-data-clickhouse
-#         persistentVolumeClaim:
-#           claimName: helicone-data-clickhouse-pvc
-#       - name: helicone-data-minio
-#         persistentVolumeClaim:
-#           claimName: helicone-data-minio-pvc
+      volumes:
+        - name: helicone-data-postgresql
+          persistentVolumeClaim:
+            claimName: helicone-data-postgresql-pvc
+        - name: helicone-data-clickhouse
+          persistentVolumeClaim:
+            claimName: helicone-data-clickhouse-pvc
+        - name: helicone-data-minio
+          persistentVolumeClaim:
+            claimName: helicone-data-minio-pvc
 ---
 apiVersion: v1
 kind: Service

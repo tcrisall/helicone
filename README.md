@@ -26,5 +26,8 @@ I couldn't get postgrest to drag queries out of postgresql using the role 'servi
 <li>Logging and transparency: The main goal is to capture, log, and inspect traffic between Open-WebUI and Ollama for learning.</li>
 </ul>
 <h4>Note:</h4>
-This is a pure hackery, experimental build NOT production-hardened!
-Expect rough edges; this is a very hacky job. Good luck and cheers if you decide to use any of this.
+<p>This is a pure hackery, experimental build NOT production-hardened!
+Expect rough edges; this is a very hacky job. Good luck and cheers if you decide to use any of this.</p>
+<p>I've setup persistent storage so bootstrapping the container is a bit challenging. I'm making these notes from memory so this may not be entirely correct... Three 'migration' jobs are defined in supervisord.conf, I've set them to not start automatically. This means that nothing will work on first boot, you have to exec into the pod and manually start the 3 migration jobs. After running them once, destroy the pod and things should work when the new pod shows up.</p>
+<p>There are a ton of ports defined.  The one's that I use are 3100 (which redirects to 3000 - the web ui) and 8786 (which is the nginx proxy which fiddles with headers then hands things to port 8787).</p>
+<p>I've had great success using Open-WebUI to talk thru Helicone to my local Ollama. When starting Open-WebUI make sure you set ENABLE_FORWARD_USER_INFO_HEADERS=true in order to get username logging to work.  I've also had OpenHands talk thru Helicone which is fascinating but I've not bothered to do anything about username logging with it.</p>
