@@ -6,6 +6,7 @@ export const HELICONE_RATE_LIMITED_API_KEY_REGEX = [
 ];
 
 export const HELICONE_API_KEY_REGEX = [
+  /^[A-Z0-9]{64}$/,  
   /^sk-[a-z0-9]{7}-[a-z0-9]{7}-[a-z0-9]{7}-[a-z0-9]{7}$/,
   /^sk-helicone-[a-z0-9]{7}-[a-z0-9]{7}-[a-z0-9]{7}-[a-z0-9]{7}$/,
   /^pk-helicone-[a-z0-9]{7}-[a-z0-9]{7}-[a-z0-9]{7}-[a-z0-9]{7}$/,
