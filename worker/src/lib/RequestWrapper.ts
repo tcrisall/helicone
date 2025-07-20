@@ -65,6 +65,9 @@ export class RequestWrapper {
     const headers = new Headers(request.headers);
     const authorization = request.headers.get("Authorization");
 
+    # fixed up a bit of a bug here - the logic to process multiple api-keys 
+    # passed in the same Authorization header did not work.
+
     if (
       !authorization ||
       !authorization.includes(",") ||

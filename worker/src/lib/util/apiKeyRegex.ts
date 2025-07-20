@@ -12,6 +12,6 @@ export const HELICONE_API_KEY_REGEX = [
   /^pk-helicone-eu-[a-z0-9]{7}-[a-z0-9]{7}-[a-z0-9]{7}-[a-z0-9]{7}$/,
   /^sk-helicone-eu-[a-z0-9]{7}-[a-z0-9]{7}-[a-z0-9]{7}-[a-z0-9]{7}$/,
   /^[sp]k(-helicone)?(-eu)?(-cp)?-\w{7}-\w{7}-\w{7}-\w{7}$/,
-  /^[A-Z0-9]+$/,  
+  /^[A-Za-z0-9]+$/,  
   ...HELICONE_RATE_LIMITED_API_KEY_REGEX,
 ];
