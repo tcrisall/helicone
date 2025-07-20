@@ -123,6 +123,7 @@ spec:
             - containerPort: 22
             - containerPort: 3000 
             - containerPort: 8585 
+            - containerPort: 8785 
             - containerPort: 8786 
             - containerPort: 8787 
             - containerPort: 5432 
@@ -218,7 +219,10 @@ spec:
     - name: jawn
       port: 8585
       targetPort: 8585 
-    - name: worker-proxy
+    - name: worker-proxy2
+      port: 8785
+      targetPort: 8785 
+    - name: worker-proxy1
       port: 8786
       targetPort: 8786 
     - name: worker

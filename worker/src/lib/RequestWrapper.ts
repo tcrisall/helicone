@@ -68,8 +68,8 @@ export class RequestWrapper {
     if (
       !authorization ||
       !authorization.includes(",") ||
-      !authorization.includes(HELICONE_KEY_ID) ||
-      !authorization.includes(HELICONE_PUBLIC_KEY_ID)
+      !(authorization.includes(HELICONE_KEY_ID) ||
+      authorization.includes(HELICONE_PUBLIC_KEY_ID))
     ) {
       if (!headers.has("helicone-auth")) {
         try {
