@@ -5,11 +5,13 @@ import {
   TooltipContent,
   Tooltip,
 } from "@/components/ui/tooltip";
+import PromptForm from "./PromptForm";
 import { MappedLLMRequest, Tool } from "@helicone-package/llm-mapper/types";
 import _ from "lodash";
 import { ModelParameters } from "@/lib/api/llm/generate";
 import { DEFAULT_EMPTY_CHAT } from "../playgroundPage";
 import { CommandIcon, Undo2Icon } from "lucide-react";
+import { useOrg } from "@/components/layout/org/organizationContext";
 
 interface PlaygroundActionsProps {
   mappedContent: MappedLLMRequest | null;
@@ -17,8 +19,12 @@ interface PlaygroundActionsProps {
   setMappedContent: (_mappedContent: MappedLLMRequest) => void;
   setModelParameters: (_modelParameters: ModelParameters) => void;
   setTools: (_tools: Tool[]) => void;
+  promptVersionId: string | undefined;
+  onCreatePrompt: (tags: string[], promptName: string) => void;
+  onSavePrompt: (newMajorVersion: boolean, setAsProduction: boolean, commitMessage: string) => void;
   onRun: () => void;
   requestId?: string;
+  isScrolled: boolean;
 }
 const PlaygroundActions = ({
   mappedContent,
@@ -26,9 +32,14 @@ const PlaygroundActions = ({
   setMappedContent,
   setModelParameters,
   setTools,
+  promptVersionId,
+  onCreatePrompt,
+  onSavePrompt,
   onRun,
   requestId,
+  isScrolled,
 }: PlaygroundActionsProps) => {
+  const organization = useOrg();
   const resetToDefault = () => {
     console.log("Reset triggered with:", {
       defaultContent,
@@ -82,6 +93,13 @@ const PlaygroundActions = ({
           </TooltipContent>
         </Tooltip>
       )}
+      
+      <PromptForm
+        isScrolled={isScrolled}
+        saveAndVersion={!!promptVersionId}
+        onCreatePrompt={onCreatePrompt}
+        onSavePrompt={onSavePrompt}
+      />
       <Tooltip>
         <TooltipTrigger asChild>
           <Button onClick={onRun}>Run</Button>

@@ -139,6 +139,15 @@ export const getMapperType = ({
     return "anthropic-chat";
   }
 
+  // Check for any Llama API model
+  if (
+    /^Llama/.test(model) ||
+    model.includes("Llama") ||
+    provider === "LLAMA"
+  ) {
+    return "llama-chat";
+  }
+
   if (isAssistant) {
     return "openai-assistant";
   }

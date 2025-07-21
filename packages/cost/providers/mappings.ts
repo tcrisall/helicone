@@ -3,6 +3,7 @@ import { anthropicProvider } from "./anthropic";
 import { costs as avianCosts } from "./avian";
 import { costs as awsBedrockCosts } from "./awsBedrock";
 import { costs as azureCosts } from "./azure";
+import { costs as llamaCosts } from "./llama";
 import { costs as cohereCosts } from "./cohere";
 import { costs as deepseekCosts } from "./deepseek";
 import { costs as fireworksAICosts } from "./fireworks";
@@ -28,6 +29,7 @@ const openAiPattern = /^https:\/\/api\.openai\.com/;
 const anthropicPattern = /^https:\/\/api\.anthropic\.com/;
 const azurePattern =
   /^(https?:\/\/)?([^.]*\.)?(openai\.azure\.com|azure-api\.net|cognitiveservices\.azure\.com)(\/.*)?$/;
+const llamaApiPattern = /^https:\/\/api\.llama\.com/;
 const localProxyPattern = /^http:\/\/127\.0\.0\.1:\d+\/v\d+\/?$/;
 const heliconeProxyPattern = /^https:\/\/oai\.hconeai\.com/;
 const amdbartekPattern = /^https:\/\/.*\.amdbartek\.dev/;
@@ -69,6 +71,9 @@ const nebius = /^https:\/\/api\.studio\.nebius\.ai/;
 // https://api.novita.ai
 const novita = /^https:\/\/api\.novita\.ai/;
 
+// api.openpipe.ai
+const openpipe = /^https:\/\/api\.openpipe\.ai/;
+
 export const providersNames = [
   "OPENAI",
   "ANTHROPIC",
@@ -98,6 +103,8 @@ export const providersNames = [
   "AVIAN",
   "NEBIUS",
   "NOVITA",
+  "OPENPIPE",
+  "LLAMA",
 ] as const;
 
 export type ProviderName = (typeof providersNames)[number];
@@ -121,6 +128,11 @@ export const providers: {
     provider: "ANTHROPIC",
     costs: anthropicProvider.costs,
     modelDetails: anthropicProvider.modelDetails,
+  },
+  {
+    pattern: llamaApiPattern,
+    provider: "LLAMA",
+    costs: llamaCosts,
   },
   {
     pattern: azurePattern,
@@ -247,6 +259,11 @@ export const providers: {
     pattern: novita,
     provider: "NOVITA",
     costs: novitaCosts,
+  },
+  {
+    pattern: openpipe,
+    provider: "OPENPIPE",
+    costs: [],
   },
 ];
 

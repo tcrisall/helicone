@@ -1,4 +1,3 @@
-
 export type AllOperators =
   | "equals"
   | "like"
@@ -27,9 +26,15 @@ export type NumberOperators = Record<
 
 export type BooleanOperators = Record<"equals", boolean>;
 
-export type TimestampOperators = Record<"equals" | "gte" | "lte" | "lt" | "gt", string>;
+export type TimestampOperators = Record<
+  "equals" | "gte" | "lte" | "lt" | "gt",
+  string
+>;
 
-export type TimestampOperatorsTyped = Record<"equals" | "gte" | "lte" | "lt" | "gt", Date>;
+export type TimestampOperatorsTyped = Record<
+  "equals" | "gte" | "lte" | "lt" | "gt",
+  Date
+>;
 
 export type AnyOperator =
   | SingleKey<TextOperators>
@@ -144,16 +149,14 @@ export type FilterLeafExperiment = SingleKey<ExperimentToOperators>;
 type ExperimentHypothesisRunToOperator = {
   result_request_id: SingleKey<TextOperators>;
 };
-export type ExperimentHypothesisRunScoreValue = SingleKey<ExperimentHypothesisRunToOperator>;
+export type ExperimentHypothesisRunScoreValue =
+  SingleKey<ExperimentHypothesisRunToOperator>;
 
 // score_value
 type ScoreValueToOperator = {
   request_id: SingleKey<TextOperators>;
 };
-export type FilterLeafScoreValue = 
-  SingleKey<ScoreValueToOperator>;
-
-
+export type FilterLeafScoreValue = SingleKey<ScoreValueToOperator>;
 
 // CLICKHOUSE TABLES
 
@@ -176,6 +179,7 @@ export type FilterLeafRequestResponseLog =
 
 // request_response_rmt
 interface RequestResponseRMTToOperators {
+  country_code: SingleKey<TextOperators>;
   latency: SingleKey<NumberOperators>;
   time_to_first_token: SingleKey<NumberOperators>;
   status: SingleKey<NumberOperators>;
@@ -210,6 +214,8 @@ interface RequestResponseRMTToOperators {
   cache_reference_id: SingleKey<TextOperators>;
   assets: SingleKey<TextOperators>;
   "helicone-score-feedback": SingleKey<BooleanOperators>; // TODO: make this not a string literal key
+  gateway_router_id: SingleKey<TextOperators>;
+  gateway_deployment_target: SingleKey<TextOperators>;
 }
 export type FilterLeafRequestResponseRMT =
   SingleKey<RequestResponseRMTToOperators>;
@@ -316,7 +322,7 @@ export type CacheMetricsTableToOperators = {
   last_hit: SingleKey<TimestampOperatorsTyped>;
   request_body: SingleKey<TextOperators>;
   response_body: SingleKey<TextOperators>;
-}
+};
 export type FilterLeafCacheMetrics = SingleKey<CacheMetricsTableToOperators>;
 
 // rate_limit_log
@@ -333,7 +339,8 @@ type OrganizationPropertiesToOperators = {
   organization_id: SingleKey<TextOperators>;
   property_key: SingleKey<TextOperators>;
 };
-export type FilterLeafOrganizationProperties = SingleKey<OrganizationPropertiesToOperators>;
+export type FilterLeafOrganizationProperties =
+  SingleKey<OrganizationPropertiesToOperators>;
 
 // FilterLeaf
 export type TablesAndViews = {
@@ -349,7 +356,6 @@ export type TablesAndViews = {
   experiment: FilterLeafExperiment;
   experiment_hypothesis_run: ExperimentHypothesisRunScoreValue;
   score_value: FilterLeafScoreValue;
-
 
   // CLICKHOUSE TABLES
   request_response_log: FilterLeafRequestResponseLog;
@@ -404,4 +410,3 @@ export type FilterLeafSubset<T extends keyof TablesAndViews> = Pick<
 //   | FilterLeafSubset<T>
 //   | FilterBranchSubset<T>
 //   | "all";
-

@@ -10,6 +10,8 @@ import {
 import { AnthropicBodyProcessor } from "../shared/bodyProcessors/anthropicBodyProcessor";
 import { AnthropicStreamBodyProcessor } from "../shared/bodyProcessors/anthropicStreamBodyProcessor";
 import { GenericBodyProcessor } from "../shared/bodyProcessors/genericBodyProcessor";
+import { LlamaBodyProcessor } from "../shared/bodyProcessors/llamaBodyProcessor";
+import { LlamaStreamBodyProcessor } from "../shared/bodyProcessors/llamaStreamBodyProcessor";
 import { OpenAIBodyProcessor } from "../shared/bodyProcessors/openaiBodyProcessor";
 import { GoogleBodyProcessor } from "../shared/bodyProcessors/googleBodyProcessor";
 import { GoogleStreamBodyProcessor } from "../shared/bodyProcessors/googleStreamBodyProcessor";
@@ -326,6 +328,8 @@ export class ResponseBodyHandler extends AbstractLogHandler {
       return new AnthropicBodyProcessor();
     } else if (!isStream && provider === "OPENAI") {
       return new OpenAIBodyProcessor();
+    } else if (!isStream && provider === "LLAMA") {
+      return new LlamaBodyProcessor();
     } else if (!isStream && provider === "GOOGLE") {
       return new GoogleBodyProcessor();
     } else if (
@@ -333,6 +337,8 @@ export class ResponseBodyHandler extends AbstractLogHandler {
       (provider === "ANTHROPIC" || model?.includes("claude"))
     ) {
       return new AnthropicStreamBodyProcessor();
+    } else if (isStream && provider === "LLAMA") {
+      return new LlamaStreamBodyProcessor();
     } else if (isStream && provider === "GOOGLE") {
       return new GoogleStreamBodyProcessor();
     } else if (isStream && provider === "TOGETHER") {

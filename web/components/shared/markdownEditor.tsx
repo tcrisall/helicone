@@ -3,6 +3,7 @@ import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-json";
 import "prismjs/components/prism-markdown";
+import "prismjs/components/prism-yaml";
 import "prismjs/components/prism-markup-templating";
 import "prismjs/themes/prism.css";
 import Editor from "react-simple-code-editor";
@@ -10,8 +11,11 @@ import { Editor as MonacoEditor } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
 import { useTheme } from "next-themes";
 import { useMemo, useState } from "react";
+import { TEMPLATE_REGEX } from "@helicone-package/prompts/templates";
+import { useVariableColorMapStore } from "@/store/features/playground/variableColorMap";
+import { HeliconeTemplateManager } from "@helicone-package/prompts/templates";
 
-const MAX_EDITOR_HEIGHT = 500;
+const MAX_EDITOR_HEIGHT = 1000000;
 const MonacoMarkdownEditor = (props: MarkdownEditorProps) => {
   const {
     text,
@@ -21,6 +25,8 @@ const MonacoMarkdownEditor = (props: MarkdownEditorProps) => {
     className,
     textareaClassName,
     containerClassName,
+    monacoOptions,
+    showLargeTextWarning = true,
   } = props;
   const { theme: currentTheme } = useTheme();
   const minHeight = 100;
@@ -30,8 +36,8 @@ const MonacoMarkdownEditor = (props: MarkdownEditorProps) => {
     setHeight(
       Math.min(
         MAX_EDITOR_HEIGHT,
-        Math.max(minHeight, editor.getContentHeight())
-      )
+        Math.max(minHeight, editor.getContentHeight()),
+      ),
     );
 
   return (
@@ -54,13 +60,16 @@ const MonacoMarkdownEditor = (props: MarkdownEditorProps) => {
           language: "markdown",
           scrollBeyondLastLine: false, // Prevents extra space at bottom
           automaticLayout: true, // Enables auto-resizing
+          ...(monacoOptions ?? {}),
         }}
         className={className}
         height={height}
       />
-      <i className="text-xs text-gray-500">
-        Helicone: Large text detected, falling back to large text editor
-      </i>
+      {showLargeTextWarning && (
+        <i className="text-xs text-gray-500">
+          Helicone: Large text detected, falling back to large text editor
+        </i>
+      )}
     </div>
   );
 };
@@ -68,7 +77,7 @@ const MonacoMarkdownEditor = (props: MarkdownEditorProps) => {
 interface MarkdownEditorProps {
   text: string | object;
   setText: (text: string) => void;
-  language: "json" | "markdown" | "python";
+  language: "json" | "markdown" | "python" | "yaml";
   disabled?: boolean;
   className?: string;
   textareaClassName?: string;
@@ -76,11 +85,13 @@ interface MarkdownEditorProps {
   id?: string;
   placeholder?: string;
   containerClassName?: string;
+  monacoOptions?: editor.IStandaloneEditorConstructionOptions;
+  showLargeTextWarning?: boolean;
 }
 
-const LARGE_TEXT_THRESHOLD = 20;
+const LARGE_TEXT_THRESHOLD = 100;
 
-const LARGE_TEXT_THRESHOLD_CHARS = 10_000;
+const LARGE_TEXT_THRESHOLD_CHARS = 20_000;
 
 const MarkdownEditor = (props: MarkdownEditorProps) => {
   const {
@@ -91,6 +102,7 @@ const MarkdownEditor = (props: MarkdownEditorProps) => {
     className,
     textareaClassName,
     monaco = false,
+    monacoOptions,
     id,
     placeholder,
   } = props;
@@ -115,16 +127,21 @@ const MarkdownEditor = (props: MarkdownEditorProps) => {
       lang: languages.python,
       ref: "python",
     },
+    yaml: {
+      lang: languages.yaml,
+      ref: "yaml",
+    },
   };
 
   const { lang, ref } = languageMap[language];
+  const { getColor } = useVariableColorMapStore();
 
   if (
     text.split("\n").length > LARGE_TEXT_THRESHOLD ||
     monaco ||
     text.length > LARGE_TEXT_THRESHOLD_CHARS
   ) {
-    return <MonacoMarkdownEditor {...props} />;
+    return <MonacoMarkdownEditor {...props} showLargeTextWarning={!monaco} />;
   }
 
   return (
@@ -136,12 +153,26 @@ const MarkdownEditor = (props: MarkdownEditorProps) => {
       highlight={(code) => {
         if (!code) return "";
         if (typeof code !== "string") return "";
-        return highlight(code, lang, ref);
+
+        let highlighted = highlight(code, lang, ref);
+        if (language === "markdown" || language === "json") {
+          highlighted = highlighted.replace(
+            TEMPLATE_REGEX,
+            (match) => {
+              const variable = HeliconeTemplateManager.extractVariables(match)[0];
+              if (!variable) return match;
+              const color = getColor(variable.name);
+              return `<span class="font-bold text-${color}">${match}</span>`;
+            }
+          );
+        }
+
+        return highlighted;
       }}
       padding={16}
       className={
         className ??
-        `text-sm text-black dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg whitespace-pre-wrap `
+        `whitespace-pre-wrap rounded-lg border border-gray-300 text-sm text-black dark:border-gray-700 dark:text-white`
       }
       textareaClassName={textareaClassName ?? ""}
       // mono font

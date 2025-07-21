@@ -121,6 +121,7 @@ export function RenderMappedRequest({
             case "openai-chat":
             case "gemini-chat":
             case "anthropic-chat":
+            case "llama-chat":
             case "openai-image":
             case "black-forest-labs-image":
               return <Chat mappedRequest={mappedRequest} />;

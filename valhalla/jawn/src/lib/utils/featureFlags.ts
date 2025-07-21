@@ -2,6 +2,7 @@ import { dbExecute } from "../shared/db/dbExecute";
 import { Result, err, ok } from "../../packages/common/result";
 
 export const HQL_FEATURE_FLAG = "hql";
+export const AI_GATEWAY_FEATURE_FLAG = "ai_gateway";
 
 /**
  * Check if an organization has access to a specific feature flag
