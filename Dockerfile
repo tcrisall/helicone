@@ -49,6 +49,7 @@ COPY ./supabase/migrations_without_supabase /app/supabase/migrations_without_sup
 COPY ./clickhouse/migrations /app/clickhouse/migrations
 COPY ./clickhouse/seeds /app/clickhouse/seeds
 COPY ./clickhouse/ch_hcone.py /app/clickhouse/ch_hcone.py
+COPY ./clickhouse/clickhouse_config.xml /etc/clickhouse-server/config.xml
 RUN chmod +x /app/clickhouse/ch_hcone.py
 
 RUN service postgresql start && \
