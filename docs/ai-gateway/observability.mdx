@@ -22,12 +22,12 @@ Enable observability to automatically log all requests to your Helicone dashboar
   </Step>
   
   <Step title="Enable Helicone observability">
-    Create or update your `ai-gateway-config.yaml`:
+    Create or update your `ai-gateway-config.yaml` (authentication must also be enabled):
 
     ```yaml
     helicone:
-      # also enables authentication
-      features: observability
+      authentication: true  # Required for observability
+      observability: true
     
     routers:
       my-router:

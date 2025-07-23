@@ -113,10 +113,7 @@ export const authMiddleware = async (
 
     res.on("finish", onFinish);
 
-    if (
-      req.path.startsWith("/v1/admin") &&
-      req.path !== "/v1/admin/has-feature-flag"
-    ) {
+    if (req.path.startsWith("/v1/admin")) {
       if (authorization.data?._type !== "jwt") {
         res.status(401).json({
           error: "Unauthorized",

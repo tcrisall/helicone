@@ -491,12 +491,12 @@ async function createSlackChannelAndInviteMembers(
   orgId: string | undefined,
   orgName: string | undefined
 ) {
-  if (!orgId || !orgName || !process.env.SLACK_BOT_TOKEN_AUTO_INVITE) {
+  if (!orgId || !orgName || !process.env.SLACK_BOT_TOKEN) {
     console.log("Missing organization ID, name, or Slack token");
     return;
   }
 
-  const slackClient = new WebClient(process.env.SLACK_BOT_TOKEN_AUTO_INVITE);
+  const slackClient = new WebClient(process.env.SLACK_BOT_TOKEN);
 
   const channelName = formatChannelName(orgName, orgId);
   console.log(`Creating Slack channel: ${channelName}`);

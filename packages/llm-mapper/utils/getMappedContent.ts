@@ -11,7 +11,7 @@ import {
   Message,
 } from "../types";
 
-import { mapLlamaRequest } from "../mappers/llama/chat";
+import { modelCost } from "../../cost/costCalc";
 import { mapBlackForestLabsImage } from "../mappers/black-forest-labs/image";
 import { mapOpenAIAssistant } from "../mappers/openai/assistant";
 import { mapOpenAIModeration } from "../mappers/openai/moderation";
@@ -29,7 +29,6 @@ export const MAPPERS: Record<MapperType, MapperFn<any, any>> = {
   "openai-response": mapOpenAIResponse,
   "anthropic-chat": mapAnthropicRequest,
   "gemini-chat": mapGeminiPro,
-  "llama-chat": mapLlamaRequest,
   "black-forest-labs-image": mapBlackForestLabsImage,
   "openai-assistant": mapOpenAIAssistant,
   "openai-image": mapDalleRequest,

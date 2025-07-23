@@ -38,8 +38,8 @@ The AI Gateway provides flexible rate limiting using GCRA (Generic Cell Rate Alg
 
     ```yaml
     helicone:
-      # Set to `features: observability` to enable observability and auth
-      features: auth
+      authentication: true
+      observability: false  # Set to true to enable observability
 
     global:
       rate-limit:
@@ -58,7 +58,7 @@ The AI Gateway provides flexible rate limiting using GCRA (Generic Cell Rate Alg
 
   <Step title="Test rate limiting">
     ```bash
-    curl -X POST http://localhost:8080/ai/chat/completions \
+    curl -X POST http://localhost:8080/router/default/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer sk-helicone-your-api-key" \
       -d '{
@@ -114,14 +114,12 @@ The AI Gateway provides flexible rate limiting using GCRA (Generic Cell Rate Alg
 
     ```yaml
     helicone:
-      # Set to `features: observability` to enable observability and auth
-      features: auth
-
-    rate-limit-store:
-      type: in-memory
+      authentication: true
+      observability: false  # Set to true to enable observability
 
     global:
       rate-limit:
+        store: in-memory
         per-api-key:
           capacity: 1000
           refill-frequency: 1m  # 1000 requests per minute
@@ -134,14 +132,12 @@ The AI Gateway provides flexible rate limiting using GCRA (Generic Cell Rate Alg
 
     ```yaml
     helicone:
-      # Set to `features: observability` to enable observability and auth
-      features: auth
-
-    rate-limit-store:
-      type: in-memory # If the rate limit store is not set, it will use in-memory by default
+      authentication: true
+      observability: false  # Set to true to enable observability
 
     global:
       rate-limit:
+        store: in-memory
         cleanup-interval: 5m
     
     routers:
@@ -164,8 +160,8 @@ The AI Gateway provides flexible rate limiting using GCRA (Generic Cell Rate Alg
 
     ```yaml
     helicone:
-      # Set to `features: observability` to enable observability and auth
-      features: auth
+      authentication: true
+      observability: false  # Set to true to enable observability
 
     routers:
       production:
@@ -238,66 +234,18 @@ Rate limiting counters can be stored in different backends depending on your dep
     **Local memory storage**
     
     Rate limiting state is stored locally in each router instance. Fast and simple, but limits are not shared across multiple instances.
-
+    
     ```yaml
-    rate-limit-store:
-      type: in-memory
+    global:
+      rate-limit:
+        store: in-memory
+        cleanup-interval: 5m
     ```
     
     **Best for:**
     - Single instance deployments
     - Development environments
     - High-performance scenarios where cross-instance coordination isn't needed
-  </Accordion>
-
-  <Accordion title="Redis Storage" icon="database">
-    **Distributed rate limiting state stored in Redis for coordination across multiple router instances**
-
-    ```yaml
-    rate-limit-store:
-      type: redis
-    ```
-
-    **With custom host-url:**
-    ```yaml
-    rate-limit-store:
-      type: redis
-      host-url: "redis://localhost:6379"
-    ```
-
-    **Options:**
-    - `host-url`: Redis connection string
-      - Supports standard Redis URL format: `redis://[username:password@]host[:port][/database]`
-    - `connection-timeout`: Connection timeout in seconds (default: 5)
-  </Accordion>
-
-  <Accordion title="Mixed Storage" icon="flask-vial">
-    **Mixed storage for different environments**
-
-    ```yaml
-    rate-limit-store:
-      type: redis
-
-    global: # this will use redis for global rate limits
-      rate-limit:
-        per-api-key:
-          capacity: 1000
-          refill-frequency: 1m
-
-    routers:
-      production:
-        rate-limit: # this will also use redis for router-specific rate limits
-          per-api-key:
-            capacity: 1000
-            refill-frequency: 1m
-
-      development:
-        rate-limit:
-          store: in-memory # this will use in-memory for router-specific rate limits
-          per-api-key:
-            capacity: 100
-            refill-frequency: 1m
-    ```
   </Accordion>
 </AccordionGroup>
 
@@ -311,6 +259,7 @@ The following rate limiting features are planned for future releases:
 
 | Feature | Description | Version |
 |---------|-------------|---------|
+| **Redis Storage** | Distributed rate limiting state stored in Redis for coordination across multiple router instances | v1 |
 | **Database Storage** | Persistent rate limiting state with advanced querying capabilities for analytics and compliance | v2 |
 | **Per-End-User Limits** | Rate limits applied to end users via `Helicone-User-Id` header for SaaS user quotas | v1 |
 | **Per-Team Limits** | Rate limits applied to teams for budget and governance controls | v2 |

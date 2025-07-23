@@ -62,8 +62,6 @@ export interface IHeliconeHeaders {
   webhookEnabled: boolean;
   experimentColumnId: Nullable<string>;
   experimentRowIndex: Nullable<string>;
-  gatewayRouterId: Nullable<string>;
-  gatewayDeploymentTarget: Nullable<string>;
 }
 
 export class HeliconeHeaders<T extends IInternalHeaders>
@@ -113,8 +111,6 @@ export class HeliconeHeaders<T extends IInternalHeaders>
   lytixKey: Nullable<string>;
   experimentColumnId: Nullable<string>;
   experimentRowIndex: Nullable<string>;
-  gatewayRouterId: Nullable<string>;
-  gatewayDeploymentTarget: Nullable<string>;
 
   constructor(private headers: T) {
     const heliconeHeaders = this.getHeliconeHeaders({
@@ -151,8 +147,6 @@ export class HeliconeHeaders<T extends IInternalHeaders>
     this.webhookEnabled = heliconeHeaders.webhookEnabled;
     this.experimentColumnId = heliconeHeaders.experimentColumnId;
     this.experimentRowIndex = heliconeHeaders.experimentRowIndex;
-    this.gatewayRouterId = heliconeHeaders.gatewayRouterId;
-    this.gatewayDeploymentTarget = heliconeHeaders.gatewayDeploymentTarget;
   }
 
   private getFallBacks(): Nullable<HeliconeFallback[]> {
@@ -290,9 +284,6 @@ export class HeliconeHeaders<T extends IInternalHeaders>
         this.headers.get("Helicone-Experiment-Column-Id") ?? null,
       experimentRowIndex:
         this.headers.get("Helicone-Experiment-Row-Index") ?? null,
-      gatewayRouterId: this.headers.get("Helicone-Gateway-Router-Id") ?? null,
-      gatewayDeploymentTarget:
-        this.headers.get("Helicone-Gateway-Deployment-Target") ?? null,
     };
   }
 

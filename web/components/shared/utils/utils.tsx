@@ -20,7 +20,7 @@ const getUSDateShort = (value: string) => {
   return `${month} ${day}`;
 };
 
-const getUSDate = (date: Date, includeTimeZone: boolean = false) => {
+const getUSDate = (date: Date) => {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "long",
@@ -28,7 +28,6 @@ const getUSDate = (date: Date, includeTimeZone: boolean = false) => {
     hour: "numeric",
     minute: "2-digit",
     hour12: true,
-    timeZoneName: includeTimeZone ? "short" : undefined,
   };
 
   let formattedDate = date.toLocaleString("en-US", options);
@@ -40,21 +39,9 @@ const getUSDate = (date: Date, includeTimeZone: boolean = false) => {
   return formattedDate;
 };
 
-const getUSDateFromString = (value: string, includeTimeZone: boolean = false) => {
+const getUSDateFromString = (value: string) => {
   const date = new Date(value);
-  return getUSDate(date, includeTimeZone);
-};
-
-const get24HourFromDate = (date: Date) => {
-  return date.toLocaleString(undefined, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    hourCycle: "h23",
-    timeZoneName: "short",
-  });
+  return getUSDate(date);
 };
 
 const get24HourFromString = (value: string) => {
@@ -66,7 +53,6 @@ const get24HourFromString = (value: string) => {
     hour: "2-digit",
     minute: "2-digit",
     hourCycle: "h23",
-    timeZoneName: "short",
   });
 };
 
@@ -106,7 +92,6 @@ export {
   capitalizeWords,
   getUSDate,
   getUSDateFromString,
-  get24HourFromDate,
   get24HourFromString,
   getUSDateMin,
   getUSDateShort,

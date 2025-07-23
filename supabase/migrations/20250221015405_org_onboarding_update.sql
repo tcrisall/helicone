@@ -20,7 +20,7 @@ INSERT INTO public.organization (
 VALUES (
         'My Organization',
         NEW.id,
-        'enterprise',
+        'free',
         true,
         false,
         false,
@@ -28,7 +28,7 @@ VALUES (
             'hasOnboarded',
             false,
             'selectedTier',
-            'enterprise',
+            'free',
             'currentStep',
             'ORGANIZATION',
             'members',

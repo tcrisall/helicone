@@ -183,7 +183,6 @@ const chatCompletion = await openai.chat.completions.create(
         </div>
       ) : (
         <>
-
           {/* Search & Card/Table View Toggle */}
           {promptCount > 0 && (
             <div

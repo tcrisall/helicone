@@ -104,7 +104,7 @@ const SignIn = ({
                 });
 
               if (error) {
-                setNotification(error, "error");
+                setNotification("Error logging in. Please try again.", "error");
                 console.error(error);
                 return;
               }

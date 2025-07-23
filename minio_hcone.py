@@ -39,7 +39,6 @@ docker run -d -p {args.port}:9000 -p 9001:9001 --name {container_name} \
     )
 
     create_bucket_if_not_exists(minio_client, 'request-response-storage')
-    create_bucket_if_not_exists(minio_client, 'hql-store')
 
 
 def stop_minio(args):

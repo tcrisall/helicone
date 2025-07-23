@@ -44,7 +44,6 @@ import FeedbackAction from "../feedback/thumbsUpThumbsDown";
 import { RenderMappedRequest } from "./RenderHeliconeRequest";
 import ScrollableBadges from "./ScrollableBadges";
 import StatusBadge from "./statusBadge";
-import { getUSDateFromString } from "@/components/shared/utils/utils";
 
 const RequestDescTooltip = (props: {
   displayText: string;
@@ -197,7 +196,6 @@ export default function RequestDrawer(props: RequestDivProps) {
       {
         label: "Created At",
         value: formatDate(request.heliconeMetadata.createdAt),
-        fullValue: getUSDateFromString(request.heliconeMetadata.createdAt, true),
       },
       { label: "Request ID", value: request.id },
       { label: "User", value: request.heliconeMetadata.user || "Unknown" },
@@ -625,19 +623,6 @@ export default function RequestDrawer(props: RequestDivProps) {
                             </TooltipContent>
                           </Tooltip>
                         </TooltipProvider>
-                      ) : item.label === "Created At" ? (
-                        <TooltipProvider>
-                          <Tooltip delayDuration={100}>
-                            <TooltipTrigger asChild>
-                              <p className="text-xs truncate min-w-0 text-right cursor-pointer">
-                                {item.value}
-                              </p>
-                            </TooltipTrigger>
-                            <TooltipContent side="bottom" className="text-xs">
-                              {item.fullValue}
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
                       ) : (
                         <p className="text-xs truncate min-w-0 text-right">
                           {item.value}
@@ -740,18 +725,15 @@ export default function RequestDrawer(props: RequestDivProps) {
           <div className="flex flex-row justify-between items-center gap-2 px-3">
             <div className="flex flex-row items-center gap-2">
               {isChatRequest && (
-                <Link
-                  href={`/playground?requestId=${request.id}`}
-                >
                 <Button
                   variant="action"
                   size="sm"
                   className="flex flex-row items-center gap-1.5"
+                  onClick={handleTestPrompt}
                 >
                   <PiPlayBold className="h-4 w-4" />
                   Test Prompt
                 </Button>
-                </Link>
               )}
 
               {isChatRequest && (

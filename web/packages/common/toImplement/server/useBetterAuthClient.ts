@@ -84,7 +84,6 @@ export async function betterAuthClientFromSSRContext(
           org: org.data[0]! as HeliconeOrg,
           role: org.data[0].role ?? "member",
         }
-      : undefined,
-    user.data ?? undefined
+      : undefined
   );
 }

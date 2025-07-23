@@ -7,7 +7,6 @@ export type MapperType =
   | "openai-response"
   | "anthropic-chat"
   | "gemini-chat"
-  | "llama-chat"
   | "black-forest-labs-image"
   | "openai-assistant"
   | "openai-image"
@@ -348,6 +347,4 @@ export interface HeliconeRequest {
   cache_reference_id: string | null;
   cache_enabled: boolean;
   updated_at?: string;
-  gateway_router_id?: string | null;
-  gateway_deployment_target?: string | null;
 }

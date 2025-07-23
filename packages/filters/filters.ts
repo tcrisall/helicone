@@ -218,7 +218,6 @@ const whereKeyMappings: KeyMappings = {
       };
     }
     return easyKeyMappings<"request_response_rmt">({
-      country_code: "request_response_rmt.country_code",
       latency: "request_response_rmt.latency",
       time_to_first_token: "request_response_rmt.time_to_first_token",
       status: "request_response_rmt.status",
@@ -241,11 +240,7 @@ const whereKeyMappings: KeyMappings = {
       cache_reference_id: "request_response_rmt.cache_reference_id",
       assets: "request_response_rmt.asset_ids",
       prompt_cache_read_tokens: "request_response_rmt.prompt_cache_read_tokens",
-      prompt_cache_write_tokens:
-        "request_response_rmt.prompt_cache_write_tokens",
-      gateway_router_id: "request_response_rmt.gateway_router_id",
-      gateway_deployment_target:
-        "request_response_rmt.gateway_deployment_target",
+      prompt_cache_write_tokens: "request_response_rmt.prompt_cache_write_tokens",
     })(filter, placeValueSafely);
   },
   users_view: easyKeyMappings<"users_view">({}),
@@ -284,13 +279,10 @@ const whereKeyMappings: KeyMappings = {
     saved_latency_ms: "cache_metrics.saved_latency_ms",
     saved_completion_tokens: "cache_metrics.saved_completion_tokens",
     saved_prompt_tokens: "cache_metrics.saved_prompt_tokens",
-    saved_completion_audio_tokens:
-      "cache_metrics.saved_completion_audio_tokens",
+    saved_completion_audio_tokens: "cache_metrics.saved_completion_audio_tokens",
     saved_prompt_audio_tokens: "cache_metrics.saved_prompt_audio_tokens",
-    saved_prompt_cache_write_tokens:
-      "cache_metrics.saved_prompt_cache_write_tokens",
-    saved_prompt_cache_read_tokens:
-      "cache_metrics.saved_prompt_cache_read_tokens",
+    saved_prompt_cache_write_tokens: "cache_metrics.saved_prompt_cache_write_tokens",
+    saved_prompt_cache_read_tokens: "cache_metrics.saved_prompt_cache_read_tokens",
     first_hit: "cache_metrics.first_hit",
     last_hit: "cache_metrics.last_hit",
     request_body: "cache_metrics.request_body",
@@ -305,7 +297,7 @@ const whereKeyMappings: KeyMappings = {
   job: NOT_IMPLEMENTED,
   job_node: NOT_IMPLEMENTED,
   user_metrics: easyKeyMappings<"user_metrics">({}),
-};
+}
 
 const havingKeyMappings: KeyMappings = {
   user_metrics: easyKeyMappings<"user_metrics">({
@@ -352,13 +344,10 @@ const havingKeyMappings: KeyMappings = {
     saved_latency_ms: "cache_metrics.saved_latency_ms",
     saved_completion_tokens: "cache_metrics.saved_completion_tokens",
     saved_prompt_tokens: "cache_metrics.saved_prompt_tokens",
-    saved_completion_audio_tokens:
-      "cache_metrics.saved_completion_audio_tokens",
+    saved_completion_audio_tokens: "cache_metrics.saved_completion_audio_tokens",
     saved_prompt_audio_tokens: "cache_metrics.saved_prompt_audio_tokens",
-    saved_prompt_cache_write_tokens:
-      "cache_metrics.saved_prompt_cache_write_tokens",
-    saved_prompt_cache_read_tokens:
-      "cache_metrics.saved_prompt_cache_read_tokens",
+    saved_prompt_cache_write_tokens: "cache_metrics.saved_prompt_cache_write_tokens",
+    saved_prompt_cache_read_tokens: "cache_metrics.saved_prompt_cache_read_tokens",
     first_hit: "cache_metrics.first_hit",
     last_hit: "cache_metrics.last_hit",
     request_body: "cache_metrics.request_body",
@@ -384,7 +373,7 @@ const havingKeyMappings: KeyMappings = {
   values: NOT_IMPLEMENTED,
   job: NOT_IMPLEMENTED,
   job_node: NOT_IMPLEMENTED,
-};
+}
 
 function operatorToSql(operator: AllOperators): string {
   switch (operator) {
@@ -660,6 +649,7 @@ export async function buildFilterWithAuthClickHouseCacheMetrics(
     },
   }));
 }
+
 
 export async function buildFilterWithAuthClickHouseRateLimits(
   args: ExternalBuildFilterArgs & { org_id: string }

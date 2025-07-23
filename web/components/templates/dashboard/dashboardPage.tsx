@@ -49,7 +49,6 @@ import { QuantilesGraph } from "./quantilesGraph";
 import StyledAreaChart from "./styledAreaChart";
 import SuggestionModal from "./suggestionsModal";
 import { useDashboardPage } from "./useDashboardPage";
-import DashboardChartTooltipContent from "./DashboardChartTooltipContent";
 const ResponsiveGridLayout = WidthProvider(Responsive) as React.ComponentType<
   ResponsiveProps & { children?: React.ReactNode }
 >;
@@ -103,7 +102,7 @@ const DashboardPage = (props: DashboardPageProps) => {
       } else {
         return currentTimeFilter || "24h";
       }
-    })(),
+    })()
   );
   const [timeFilter, setTimeFilter] = useState<TimeFilter>(getTimeFilter());
 
@@ -111,12 +110,12 @@ const DashboardPage = (props: DashboardPageProps) => {
 
   const timeIncrement = useMemo(
     () => getTimeInterval(timeFilter),
-    [timeFilter],
+    [timeFilter]
   );
 
   const mockOverTimeData = useMemo(
     () => getMockOverTimeData(timeIncrement),
-    [timeIncrement],
+    [timeIncrement]
   );
 
   const { unauthorized, currentTier } = useGetUnauthorized(user.id);
@@ -158,7 +157,7 @@ const DashboardPage = (props: DashboardPageProps) => {
       value:
         metrics.totalCost.data?.data && metrics.totalRequests?.data?.data
           ? `$${formatLargeNumber(
-              metrics.totalCost.data.data / metrics.totalRequests?.data?.data,
+              metrics.totalCost.data.data / metrics.totalRequests?.data?.data
             )}`
           : "$0.00",
       label: "Avg Cost / Req",
@@ -172,7 +171,7 @@ const DashboardPage = (props: DashboardPageProps) => {
         metrics.totalRequests?.data?.data
           ? formatLargeNumber(
               metrics.averageTokensPerRequest.data.data
-                .average_prompt_tokens_per_response,
+                .average_prompt_tokens_per_response
             )
           : "n/a",
       label: "Avg Prompt Tokens / Req",
@@ -188,7 +187,7 @@ const DashboardPage = (props: DashboardPageProps) => {
         metrics.totalRequests?.data?.data
           ? formatLargeNumber(
               metrics.averageTokensPerRequest.data.data
-                .average_completion_tokens_per_response,
+                .average_completion_tokens_per_response
             )
           : "n/a",
       label: "Avg Completion Tokens / Req",
@@ -204,7 +203,7 @@ const DashboardPage = (props: DashboardPageProps) => {
         metrics.totalRequests?.data?.data
           ? formatLargeNumber(
               metrics.averageTokensPerRequest.data.data
-                .average_total_tokens_per_response,
+                .average_total_tokens_per_response
             )
           : "n/a",
       label: "Avg Total Tokens / Req",
@@ -263,7 +262,7 @@ const DashboardPage = (props: DashboardPageProps) => {
 
   // flatten the status counts over time
   const flattenedOverTime = Object.entries(
-    getStatusCountsOverTime().overTime,
+    getStatusCountsOverTime().overTime
   ).map(([time, counts]) => {
     return {
       date: getTimeMap(timeIncrement)(new Date(time)),
@@ -273,7 +272,7 @@ const DashboardPage = (props: DashboardPageProps) => {
   });
 
   const accumulatedStatusCounts = Object.entries(
-    getStatusCountsOverTime().accStatusCounts,
+    getStatusCountsOverTime().accStatusCounts
   )
     .map(([name, value]) => {
       if (name === "-1") {
@@ -306,12 +305,12 @@ const DashboardPage = (props: DashboardPageProps) => {
                 onClick={() => {
                   refetch();
                 }}
-                className="flex flex-row items-center text-sm font-semibold text-black hover:text-sky-700 dark:text-white"
+                className="font-semibold text-black dark:text-white text-sm items-center flex flex-row hover:text-sky-700"
               >
                 <ArrowPathIcon
                   className={clsx(
                     isAnyLoading ? "animate-spin" : "",
-                    "inline h-5 w-5",
+                    "h-5 w-5 inline"
                   )}
                 />
               </button>
@@ -343,7 +342,7 @@ const DashboardPage = (props: DashboardPageProps) => {
                       defaultTimeFilter: interval,
                       onTimeSelectHandler: (
                         key: TimeInterval,
-                        value: string,
+                        value: string
                       ) => {
                         if ((key as string) === "custom") {
                           value = value.replace("custom:", "");
@@ -389,14 +388,14 @@ const DashboardPage = (props: DashboardPageProps) => {
                   </div>
                 ))}
                 <div key="requests">
-                  <Card className="rounded-lg border border-slate-200 bg-white text-slate-950 !shadow-sm ring-0 dark:border-slate-800 dark:bg-black dark:text-slate-50">
+                  <Card className="border border-slate-200 bg-white text-slate-950 !shadow-sm dark:border-slate-800 dark:bg-black dark:text-slate-50 rounded-lg ring-0">
                     <div className="flex flex-row items-center justify-between">
                       <div className="flex flex-col space-y-0.5">
-                        <p className="text-sm text-slate-500">Requests</p>
-                        <p className="text-xl font-semibold text-slate-950 dark:text-slate-50">
+                        <p className="text-slate-500 text-sm">Requests</p>
+                        <p className="text-slate-950 dark:text-slate-50 text-xl font-semibold">
                           {metrics.totalRequests?.data?.data
                             ? `${formatNumberString(
-                                metrics.totalRequests?.data?.data.toFixed(2),
+                                metrics.totalRequests?.data?.data.toFixed(2)
                               )}`
                             : "0"}
                         </p>
@@ -410,12 +409,11 @@ const DashboardPage = (props: DashboardPageProps) => {
                       }}
                     >
                       {overTimeData.requests.isLoading ? (
-                        <div className="h-full w-full rounded-md bg-slate-200 pt-4 dark:bg-slate-800">
+                        <div className="h-full w-full bg-slate-200 dark:bg-slate-800 rounded-md pt-4">
                           <LoadingAnimation height={175} width={175} />
                         </div>
                       ) : (
                         <AreaChart
-                          customTooltip={DashboardChartTooltipContent}
                           className="h-[14rem]"
                           data={flattenedOverTime}
                           index="date"
@@ -431,15 +429,15 @@ const DashboardPage = (props: DashboardPageProps) => {
                   </Card>
                 </div>
                 <div key="errors">
-                  <Card className="flex h-full w-full flex-col rounded-lg border border-slate-200 bg-white text-slate-950 !shadow-sm ring-0 dark:border-slate-800 dark:bg-black dark:text-slate-50">
-                    <div className="flex h-full flex-col">
-                      <h2 className="mb-2 text-sm text-slate-500">
+                  <Card className="h-full w-full flex flex-col border border-slate-200 bg-white text-slate-950 !shadow-sm dark:border-slate-800 dark:bg-black dark:text-slate-50 rounded-lg ring-0">
+                    <div className="flex flex-col h-full">
+                      <h2 className="text-slate-500 text-sm mb-2">
                         All Errors
                       </h2>
                       {(() => {
                         const totalErrors = accumulatedStatusCounts.reduce(
                           (sum, e) => sum + e.value,
-                          0,
+                          0
                         );
                         const errorPercentage =
                           (totalErrors /
@@ -458,8 +456,8 @@ const DashboardPage = (props: DashboardPageProps) => {
                           </div>
                         );
                       })()}
-                      <div className="flex flex-grow flex-col overflow-hidden">
-                        <div className="flex flex-row items-center justify-between pb-2">
+                      <div className="flex-grow overflow-hidden flex flex-col">
+                        <div className="flex flex-row justify-between items-center pb-2">
                           <p className="text-xs font-semibold text-slate-700">
                             Error Type
                           </p>
@@ -467,19 +465,19 @@ const DashboardPage = (props: DashboardPageProps) => {
                             Percentage
                           </p>
                         </div>
-                        <div className="flex-grow overflow-y-auto">
+                        <div className="overflow-y-auto flex-grow">
                           <BarList
                             data={(() => {
                               const totalErrors =
                                 accumulatedStatusCounts.reduce(
                                   (sum, e) => sum + e.value,
-                                  0,
+                                  0
                                 );
                               return accumulatedStatusCounts
                                 .sort((a, b) => b.value - a.value)
                                 .map((error, index) => ({
                                   name: `${error.name} (${formatLargeNumber(
-                                    error.value,
+                                    error.value
                                   )})`,
                                   value: (error.value / totalErrors) * 100,
                                   color: listColors[index % listColors.length],
@@ -503,7 +501,7 @@ const DashboardPage = (props: DashboardPageProps) => {
                     isDataOverTimeLoading={isModelsLoading}
                     withAnimation={true}
                   >
-                    <div className="flex flex-row items-center justify-between pb-2">
+                    <div className="flex flex-row justify-between items-center pb-2">
                       <p className="text-xs font-semibold text-slate-700">
                         Name
                       </p>
@@ -521,10 +519,10 @@ const DashboardPage = (props: DashboardPageProps) => {
                           }))
                           .sort(
                             (a, b) =>
-                              b.value - a.value - (b.name === "n/a" ? 1 : 0),
+                              b.value - a.value - (b.name === "n/a" ? 1 : 0)
                           ) ?? []
                       }
-                      className="h-full overflow-auto"
+                      className="overflow-auto h-full"
                       showAnimation={true}
                     />
                   </StyledAreaChart>
@@ -538,14 +536,13 @@ const DashboardPage = (props: DashboardPageProps) => {
                             metrics.totalCost.data?.data < 0.02
                               ? metrics.totalCost.data?.data.toFixed(7)
                               : metrics.totalCost.data?.data.toFixed(2),
-                            true,
+                            true
                           )}`
                         : "$0.00"
                     }
                     isDataOverTimeLoading={overTimeData.costs.isLoading}
                   >
                     <BarChart
-                      customTooltip={DashboardChartTooltipContent}
                       className="h-[14rem]"
                       data={
                         overTimeData.costs.data?.data?.map((r) => ({
@@ -576,7 +573,6 @@ const DashboardPage = (props: DashboardPageProps) => {
                     isDataOverTimeLoading={overTimeData.users.isLoading}
                   >
                     <BarChart
-                      customTooltip={DashboardChartTooltipContent}
                       className="h-[14rem]"
                       data={
                         overTimeData.users.data?.data?.map((r) => ({
@@ -613,12 +609,11 @@ const DashboardPage = (props: DashboardPageProps) => {
                   <StyledAreaChart
                     title={"Latency"}
                     value={`${new Intl.NumberFormat("us").format(
-                      (metrics.averageLatency.data?.data ?? 0) / 1000,
+                      (metrics.averageLatency.data?.data ?? 0) / 1000
                     )} s / req`}
                     isDataOverTimeLoading={overTimeData.latency.isLoading}
                   >
                     <AreaChart
-                      customTooltip={DashboardChartTooltipContent}
                       className="h-[14rem]"
                       data={
                         overTimeData.latency.data?.data?.map((r) => ({
@@ -633,7 +628,7 @@ const DashboardPage = (props: DashboardPageProps) => {
                       curveType="monotone"
                       valueFormatter={(number: number | bigint) => {
                         return `${new Intl.NumberFormat("us").format(
-                          Number(number) / 1000,
+                          Number(number) / 1000
                         )} s`;
                       }}
                     />
@@ -650,14 +645,13 @@ const DashboardPage = (props: DashboardPageProps) => {
                   <StyledAreaChart
                     title={"Time to First Token"}
                     value={`Average: ${new Intl.NumberFormat("us").format(
-                      metrics.averageTimeToFirstToken.data?.data ?? 0,
+                      metrics.averageTimeToFirstToken.data?.data ?? 0
                     )} ms`}
                     isDataOverTimeLoading={
                       overTimeData.timeToFirstToken.isLoading
                     }
                   >
                     <AreaChart
-                      customTooltip={DashboardChartTooltipContent}
                       className="h-[14rem]"
                       data={
                         overTimeData.timeToFirstToken.data?.data?.map((r) => ({
@@ -672,7 +666,7 @@ const DashboardPage = (props: DashboardPageProps) => {
                       curveType="monotone"
                       valueFormatter={(number: number | bigint) => {
                         return `${new Intl.NumberFormat("us").format(
-                          number,
+                          number
                         )} ms`;
                       }}
                     />
@@ -682,12 +676,11 @@ const DashboardPage = (props: DashboardPageProps) => {
                   <StyledAreaChart
                     title={"Threats"}
                     value={`${formatLargeNumber(
-                      Number(metrics.totalThreats.data?.data?.toFixed(0) ?? 0),
+                      Number(metrics.totalThreats.data?.data?.toFixed(0) ?? 0)
                     )}`}
                     isDataOverTimeLoading={overTimeData.threats.isLoading}
                   >
                     <AreaChart
-                      customTooltip={DashboardChartTooltipContent}
                       className="h-[14rem]"
                       data={
                         overTimeData.threats.data?.data?.map((r) => ({
@@ -704,17 +697,17 @@ const DashboardPage = (props: DashboardPageProps) => {
                   </StyledAreaChart>
                 </div>
                 <div key="suggest-more-graphs">
-                  <div className="flex h-full w-full flex-col items-center justify-center space-y-2 rounded-lg border border-dashed border-slate-200 bg-white p-2 text-slate-950 shadow-sm dark:border-slate-900 dark:bg-black dark:text-slate-50">
+                  <div className="space-y-2 bg-white dark:bg-black border border-slate-200 dark:border-slate-900 border-dashed w-full h-full p-2 text-slate-950 dark:text-slate-50 shadow-sm rounded-lg flex flex-col items-center justify-center">
                     <PresentationChartLineIcon className="h-12 w-12 text-black dark:text-white" />
                     <button
-                      className="text-semibold p-4 text-lg"
+                      className="p-4 text-semibold text-lg"
                       onClick={() => {
                         setOpenSuggestGraph(true);
                       }}
                     >
                       Request a new graph
                     </button>
-                    <div className="max-w-xs text-center text-sm text-slate-500">
+                    <div className="text-sm text-slate-500 text-center max-w-xs">
                       Or use our{" "}
                       <a
                         href="https://docs.helicone.ai/getting-started/integration-method/posthog"
@@ -736,14 +729,13 @@ const DashboardPage = (props: DashboardPageProps) => {
                       max(
                         overTimeData.promptTokensOverTime.data?.data
                           ?.map((d) => d.completion_tokens + d.prompt_tokens)
-                          .filter((d) => d !== 0) ?? [],
+                          .filter((d) => d !== 0) ?? []
                       ) /
-                        Number(getIncrementAsMinutes(timeIncrement).toFixed(2)),
+                        Number(getIncrementAsMinutes(timeIncrement).toFixed(2))
                     )} tokens`}
                     isDataOverTimeLoading={overTimeData.users.isLoading}
                   >
                     <AreaChart
-                      customTooltip={DashboardChartTooltipContent}
                       className="h-[14rem]"
                       data={
                         overTimeData.promptTokensOverTime.data?.data?.map(
@@ -759,7 +751,7 @@ const DashboardPage = (props: DashboardPageProps) => {
                             "Total / min":
                               (r.prompt_tokens + r.completion_tokens + 0.0) /
                               getIncrementAsMinutes(timeIncrement),
-                          }),
+                          })
                         ) ?? []
                       }
                       index="date"
@@ -810,7 +802,7 @@ function max(arr: number[]) {
 
 export function formatNumberString(
   numString: string,
-  minimumFractionDigits?: boolean,
+  minimumFractionDigits?: boolean
 ) {
   const num = parseFloat(numString);
   if (minimumFractionDigits) {

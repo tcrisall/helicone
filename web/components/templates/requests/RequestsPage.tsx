@@ -125,8 +125,9 @@ export default function RequestsPage(props: RequestsPageV2Props) {
   const [currentPageSize, setCurrentPageSize] = useState<number>(pageSize);
   const [selectedDataIndex, setSelectedDataIndex] = useState<number>();
   const [page, setPage] = useState<number>(currentPage);
-  const [advancedFilters, setAdvancedFilters] =
-    useState<UIFilterRowTree>(getRootFilterNode());
+  const [advancedFilters, setAdvancedFilters] = useState<UIFilterRowTree>(
+    getRootFilterNode()
+  );
 
   // TODO: Is this efficient?
   const debouncedAdvancedFilter = useDebounce(advancedFilters, 500);
@@ -156,7 +157,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
   const defaultFilter = useMemo<FilterNode>(() => {
     const currentTimeFilter = searchParams.get("t");
     const timeIntervalDate = getTimeIntervalAgo(
-      (currentTimeFilter as TimeInterval) || "1m",
+      (currentTimeFilter as TimeInterval) || "1m"
     );
     return {
       left: {
@@ -231,7 +232,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
   const sortLeaf: SortLeafRequest = getSortLeaf(
     sort.sortKey,
     sort.sortDirection,
-    sort.isCustomProperty,
+    sort.isCustomProperty
   );
   const {
     count: realCount,
@@ -255,7 +256,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
     sortLeaf,
     isCached,
     isLive,
-    rateLimited,
+    rateLimited
   );
 
   /* -------------------------------------------------------------------------- */
@@ -276,7 +277,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
 
     return getMockRequests(
       pageSize,
-      shouldForceRateLimitMock ? 429 : undefined,
+      shouldForceRateLimitMock ? 429 : undefined
     );
   }, [pageSize, emptyStateOptions]);
 
@@ -298,7 +299,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
   // Moved activeColumns state management here
   const [activeColumns, setActiveColumns] = useLocalStorage<DragColumnItem[]>(
     `requests-table-activeColumns`, // Use a unique key
-    getInitialColumns().map(columnDefToDragColumnItem), // Initialize with default columns
+    getInitialColumns().map(columnDefToDragColumnItem) // Initialize with default columns
   );
 
   const columnsWithProperties = useMemo(() => {
@@ -324,7 +325,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
             category: "Custom Property",
           },
         };
-      }),
+      })
     );
   }, [properties, isCached]);
 
@@ -352,7 +353,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
 
   const selectedRequests = useMemo(() => {
     return requests.filter((_, index) =>
-      selectedIds.includes(index.toString()),
+      selectedIds.includes(index.toString())
     );
   }, [requests, selectedIds]);
 
@@ -371,11 +372,11 @@ export default function RequestsPage(props: RequestsPageV2Props) {
         const [filterLabel, operator, value] = encoded.filter.split(":");
         const filterMapIdx = filterMap.findIndex(
           (f: any) =>
-            f.label.trim().toLowerCase() === filterLabel.trim().toLowerCase(),
+            f.label.trim().toLowerCase() === filterLabel.trim().toLowerCase()
         );
         const operatorIdx = filterMap[filterMapIdx]?.operators.findIndex(
           (o: any) =>
-            o.label.trim().toLowerCase() === operator.trim().toLowerCase(),
+            o.label.trim().toLowerCase() === operator.trim().toLowerCase()
         );
 
         if (
@@ -405,7 +406,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
       if (currentAdvancedFilters) {
         const filters = decodeURIComponent(currentAdvancedFilters).replace(
           /^"|"$/g,
-          "",
+          ""
         );
 
         const parsedFilters = JSON.parse(filters);
@@ -428,10 +429,10 @@ export default function RequestsPage(props: RequestsPageV2Props) {
           query: { ...router.query, page: newPage.toString() },
         },
         undefined,
-        { shallow: true },
+        { shallow: true }
       );
     },
-    [router],
+    [router]
   );
 
   const onTimeSelectHandler = useCallback(
@@ -470,7 +471,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
         });
       }
     },
-    [isCached, setTimeFilter],
+    [isCached, setTimeFilter]
   );
 
   // if shift is pressed, we select the rows in the highlighted range
@@ -503,7 +504,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
       setSelectedDataIndex,
       setSelectedData,
       searchParams,
-    ],
+    ]
   );
 
   const getDefaultValue = useCallback(() => {
@@ -535,7 +536,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
   useEffect(() => {
     if (userId && !userFilterAppliedRef.current) {
       const userFilterMapIndex = filterMap.findIndex(
-        (filter: any) => filter.label === "User",
+        (filter: any) => filter.label === "User"
       );
 
       if (userFilterMapIndex !== -1) {
@@ -568,8 +569,8 @@ export default function RequestsPage(props: RequestsPageV2Props) {
     if (initialRequest.data?.data && !selectedData) {
       setSelectedData(
         heliconeRequestToMappedContent(
-          initialRequest.data.data as HeliconeRequest,
-        ),
+          initialRequest.data.data as HeliconeRequest
+        )
       );
       drawerRef.current?.expand(); // Expand the drawer
       drawerRef.current?.resize(drawerSize);
@@ -578,13 +579,13 @@ export default function RequestsPage(props: RequestsPageV2Props) {
 
   return shouldShowMockData === undefined ? null : shouldShowMockData ===
     false ? (
-    <main className="flex h-screen w-full animate-fade-in flex-col">
+    <main className="h-screen flex flex-col w-full animate-fade-in">
       {/* Requests Header */}
       {/* Warning */}
       {!userId && (
         <div
           className={
-            "align-center flex flex-col items-center justify-center text-center"
+            "flex flex-col items-center justify-center align-center text-center"
           }
         >
           <StreamWarning
@@ -621,7 +622,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="flex flex-row gap-2 bg-sky-50 text-xs text-sky-600 hover:bg-sky-100 hover:text-sky-700"
+                  className="flex flex-row gap-2 bg-sky-50 text-sky-600 hover:bg-sky-100 hover:text-sky-700 text-xs"
                   onClick={() => {
                     setModalOpen(true);
                   }}
@@ -631,7 +632,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
                 </Button>
               )}
 
-              <div className="gpa-0 flex flex-row">
+              <div className="flex flex-row gpa-0">
                 {/* Columns Configuration Button */}
                 <ViewColumns
                   columns={tableRef.current?.getAllColumns() || []}
@@ -720,12 +721,12 @@ export default function RequestsPage(props: RequestsPageV2Props) {
               currentRow={selectedData}
             >
               {selectMode && (
-                <Row className="w-full items-center justify-between gap-5 bg-white p-5 dark:bg-black">
-                  <div className="flex flex-row items-center gap-2">
-                    <span className="whitespace-nowrap text-sm font-medium text-slate-900 dark:text-slate-100">
+                <Row className="gap-5 items-center w-full justify-between bg-white dark:bg-black p-5">
+                  <div className="flex flex-row gap-2 items-center">
+                    <span className="text-sm font-medium text-slate-900 dark:text-slate-100 whitespace-nowrap">
                       Request Selection:
                     </span>
-                    <span className="whitespace-nowrap rounded-md bg-[#F1F5F9] p-2 text-sm font-medium text-[#1876D2] dark:bg-slate-900 dark:text-slate-100">
+                    <span className="text-sm p-2 rounded-md font-medium bg-[#F1F5F9] dark:bg-slate-900 text-[#1876D2] dark:text-slate-100 whitespace-nowrap">
                       {selectedIds.length} selected
                     </span>
                   </div>
@@ -775,7 +776,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
                   setSelectedData(requests[selectedDataIndex - 1]);
                   searchParams.set(
                     "requestId",
-                    requests[selectedDataIndex - 1].id,
+                    requests[selectedDataIndex - 1].id
                   );
                 }
               } else if (direction === "next") {
@@ -787,7 +788,7 @@ export default function RequestsPage(props: RequestsPageV2Props) {
                   setSelectedData(requests[selectedDataIndex + 1]);
                   searchParams.set(
                     "requestId",
-                    requests[selectedDataIndex + 1].id,
+                    requests[selectedDataIndex + 1].id
                   );
                 }
               }
@@ -849,7 +850,7 @@ function getTimeIntervalAgo(interval: TimeInterval): Date {
     now.getUTCDate(),
     now.getUTCHours(),
     now.getUTCMinutes(),
-    now.getUTCSeconds(),
+    now.getUTCSeconds()
   );
 
   switch (interval) {
@@ -872,7 +873,7 @@ function getTimeIntervalAgo(interval: TimeInterval): Date {
 function getSortLeaf(
   sortKey: string | null,
   sortDirection: SortDirection | null,
-  isCustomProperty: boolean,
+  isCustomProperty: boolean
 ): SortLeafRequest {
   if (sortKey && sortDirection && isCustomProperty) {
     return {

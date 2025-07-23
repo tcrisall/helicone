@@ -13,48 +13,25 @@ import {
 import type { JawnAuthenticatedRequest } from "../../types/request";
 import { err, ok, Result } from "../../packages/common/result";
 import { GatewayManager } from "../../managers/gatewayManager";
-import {
-  AI_GATEWAY_FEATURE_FLAG,
-  checkFeatureFlag,
-} from "../../lib/utils/featureFlags";
-import { TimeIncrement } from "../../managers/helpers/getXOverTime";
 
 export type LatestRouterConfig = {
   id: string;
   name: string;
-  hash: string;
   version: string;
   config: string;
 };
 
-export type Router = {
+export type RouterConfig = {
   id: string;
-  hash: string;
   name: string;
   latestVersion: string;
   lastUpdatedAt: string;
 };
 
-export type CreateRouterResult = {
-  routerId: string;
-  routerHash: string;
+export type CreateRouterConfigResult = {
+  routerConfigId: string;
   routerVersionId: string;
-};
-
-export type RouterRequestsOverTime = {
-  time: Date;
-  count: number;
-  status: number;
-};
-
-export type RouterCostOverTime = {
-  time: Date;
-  cost: number;
-};
-
-export type RouterLatencyOverTime = {
-  time: Date;
-  duration: number;
+  apiKey: string;
 };
 
 @Route("v1/gateway")
@@ -62,20 +39,13 @@ export type RouterLatencyOverTime = {
 @Security("api_key")
 export class GatewayController extends Controller {
   @Get("/")
-  public async getRouters(
+  public async getRouterConfigs(
     @Request() request: JawnAuthenticatedRequest
-  ): Promise<Result<{ routers: Router[] }, string>> {
-    const featureFlagResult = await checkFeatureFlag(
-      request.authParams.organizationId,
-      AI_GATEWAY_FEATURE_FLAG
-    );
-    if (featureFlagResult.error) {
-      return err(featureFlagResult.error);
-    }
+  ): Promise<Result<{ routerConfigs: RouterConfig[] }, string>> {
     const gatewayManager = new GatewayManager(request.authParams);
-    const result = await gatewayManager.getRouters();
+    const result = await gatewayManager.getRouterConfigs();
     if (result.error || !result.data) {
-      return err(result.error ?? "Failed to get routers");
+      return err(result.error ?? "Failed to get router configs");
     }
     return ok(result.data);
   }
@@ -85,13 +55,6 @@ export class GatewayController extends Controller {
     @Request() request: JawnAuthenticatedRequest,
     @Path() id: string
   ): Promise<Result<LatestRouterConfig, string>> {
-    const featureFlagResult = await checkFeatureFlag(
-      request.authParams.organizationId,
-      AI_GATEWAY_FEATURE_FLAG
-    );
-    if (featureFlagResult.error) {
-      return err(featureFlagResult.error);
-    }
     const gatewayManager = new GatewayManager(request.authParams);
     const result = await gatewayManager.getLatestRouterConfig(id);
     if (result.error || !result.data) {
@@ -100,113 +63,14 @@ export class GatewayController extends Controller {
     return ok(result.data);
   }
 
-  @Get("/:routerHash/requests-over-time")
-  public async getRouterRequestsOverTime(
-    @Request() request: JawnAuthenticatedRequest,
-    @Path() routerHash: string
-  ): Promise<Result<RouterRequestsOverTime[], string>> {
-    const featureFlagResult = await checkFeatureFlag(
-      request.authParams.organizationId,
-      AI_GATEWAY_FEATURE_FLAG
-    );
-    if (featureFlagResult.error) {
-      return err(featureFlagResult.error);
-    }
-    if (!request.query.start || !request.query.end) {
-      return err("Start and end are required");
-    }
-    const gatewayManager = new GatewayManager(request.authParams);
-    const result = await gatewayManager.getRouterRequestsOverTime(
-      routerHash,
-      {
-        start: request.query.start as string,
-        end: request.query.end as string,
-      },
-      (request.query?.dbIncrement ?? "hour") as TimeIncrement,
-      Number(request.query?.timeZoneDifference ?? 0)
-    );
-    if (result.error || !result.data) {
-      return err(result.error ?? "Failed to get router requests");
-    }
-    return ok(result.data);
-  }
-
-  @Get("/:routerHash/cost-over-time")
-  public async getRouterCostOverTime(
-    @Request() request: JawnAuthenticatedRequest,
-    @Path() routerHash: string
-  ): Promise<Result<RouterCostOverTime[], string>> {
-    const featureFlagResult = await checkFeatureFlag(
-      request.authParams.organizationId,
-      AI_GATEWAY_FEATURE_FLAG
-    );
-    if (featureFlagResult.error) {
-      return err(featureFlagResult.error);
-    }
-    if (!request.query.start || !request.query.end) {
-      return err("Start and end are required");
-    }
-    const gatewayManager = new GatewayManager(request.authParams);
-    const result = await gatewayManager.getRouterCostOverTime(
-      routerHash,
-      {
-        start: request.query.start as string,
-        end: request.query.end as string,
-      },
-      (request.query?.dbIncrement ?? "hour") as TimeIncrement,
-      Number(request.query?.timeZoneDifference ?? 0)
-    );
-    if (result.error || !result.data) {
-      return err(result.error ?? "Failed to get router cost");
-    }
-    return ok(result.data);
-  }
-
-  @Get("/:routerHash/latency-over-time")
-  public async getRouterLatencyOverTime(
-    @Request() request: JawnAuthenticatedRequest,
-    @Path() routerHash: string
-  ): Promise<Result<RouterLatencyOverTime[], string>> {
-    const featureFlagResult = await checkFeatureFlag(
-      request.authParams.organizationId,
-      AI_GATEWAY_FEATURE_FLAG
-    );
-    if (featureFlagResult.error) {
-      return err(featureFlagResult.error);
-    }
-    if (!request.query.start || !request.query.end) {
-      return err("Start and end are required");
-    }
-    const gatewayManager = new GatewayManager(request.authParams);
-    const result = await gatewayManager.getRouterLatencyOverTime(
-      routerHash,
-      {
-        start: request.query.start as string,
-        end: request.query.end as string,
-      },
-      (request.query?.dbIncrement ?? "hour") as TimeIncrement,
-      Number(request.query?.timeZoneDifference ?? 0)
-    );
-    if (result.error || !result.data) {
-      return err(result.error ?? "Failed to get router latency");
-    }
-    return ok(result.data);
-  }
   @Post("/")
-  public async createRouter(
+  public async createRouterConfig(
     @Request() request: JawnAuthenticatedRequest,
     @Body() body: { name: string; config: string }
-  ): Promise<Result<CreateRouterResult, string>> {
-    const featureFlagResult = await checkFeatureFlag(
-      request.authParams.organizationId,
-      AI_GATEWAY_FEATURE_FLAG
-    );
-    if (featureFlagResult.error) {
-      return err(featureFlagResult.error);
-    }
+  ): Promise<Result<CreateRouterConfigResult, string>> {
     try {
       const gatewayManager = new GatewayManager(request.authParams);
-      const result = await gatewayManager.createRouter({
+      const result = await gatewayManager.createRouterConfig({
         name: body.name,
         config: body.config,
       });
@@ -223,20 +87,13 @@ export class GatewayController extends Controller {
   }
 
   @Put("/:id")
-  public async updateRouter(
+  public async updateRouterConfig(
     @Request() request: JawnAuthenticatedRequest,
     @Path() id: string,
     @Body() body: { name: string; config: string }
   ): Promise<Result<null, string>> {
-    const featureFlagResult = await checkFeatureFlag(
-      request.authParams.organizationId,
-      AI_GATEWAY_FEATURE_FLAG
-    );
-    if (featureFlagResult.error) {
-      return err(featureFlagResult.error);
-    }
     const gatewayManager = new GatewayManager(request.authParams);
-    const result = await gatewayManager.updateRouter({
+    const result = await gatewayManager.updateRouterConfig({
       id,
       name: body.name,
       config: body.config,

@@ -14,8 +14,6 @@ import { UserController } from './../../controllers/public/userController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { EvaluatorController } from './../../controllers/public/evaluatorController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { Prompt2025Controller } from './../../controllers/public/prompt2025Controller';
-// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { RequestController } from './../../controllers/public/requestController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { PromptController } from './../../controllers/public/promptController';
@@ -269,7 +267,7 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Partial_RequestResponseRMTToOperators_": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"country_code":{"ref":"Partial_TextOperators_"},"latency":{"ref":"Partial_NumberOperators_"},"time_to_first_token":{"ref":"Partial_NumberOperators_"},"status":{"ref":"Partial_NumberOperators_"},"request_created_at":{"ref":"Partial_TimestampOperatorsTyped_"},"response_created_at":{"ref":"Partial_TimestampOperatorsTyped_"},"model":{"ref":"Partial_TextOperators_"},"user_id":{"ref":"Partial_TextOperators_"},"organization_id":{"ref":"Partial_TextOperators_"},"node_id":{"ref":"Partial_TextOperators_"},"job_id":{"ref":"Partial_TextOperators_"},"threat":{"ref":"Partial_BooleanOperators_"},"request_id":{"ref":"Partial_TextOperators_"},"prompt_tokens":{"ref":"Partial_NumberOperators_"},"completion_tokens":{"ref":"Partial_NumberOperators_"},"prompt_cache_read_tokens":{"ref":"Partial_NumberOperators_"},"prompt_cache_write_tokens":{"ref":"Partial_NumberOperators_"},"total_tokens":{"ref":"Partial_NumberOperators_"},"target_url":{"ref":"Partial_TextOperators_"},"properties":{"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"ref":"Partial_TextOperators_"}},"search_properties":{"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"ref":"Partial_TextOperators_"}},"scores":{"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"ref":"Partial_TextOperators_"}},"scores_column":{"ref":"Partial_TextOperators_"},"request_body":{"ref":"Partial_VectorOperators_"},"response_body":{"ref":"Partial_VectorOperators_"},"cache_enabled":{"ref":"Partial_BooleanOperators_"},"cache_reference_id":{"ref":"Partial_TextOperators_"},"assets":{"ref":"Partial_TextOperators_"},"helicone-score-feedback":{"ref":"Partial_BooleanOperators_"},"gateway_router_id":{"ref":"Partial_TextOperators_"},"gateway_deployment_target":{"ref":"Partial_TextOperators_"}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"latency":{"ref":"Partial_NumberOperators_"},"time_to_first_token":{"ref":"Partial_NumberOperators_"},"status":{"ref":"Partial_NumberOperators_"},"request_created_at":{"ref":"Partial_TimestampOperatorsTyped_"},"response_created_at":{"ref":"Partial_TimestampOperatorsTyped_"},"model":{"ref":"Partial_TextOperators_"},"user_id":{"ref":"Partial_TextOperators_"},"organization_id":{"ref":"Partial_TextOperators_"},"node_id":{"ref":"Partial_TextOperators_"},"job_id":{"ref":"Partial_TextOperators_"},"threat":{"ref":"Partial_BooleanOperators_"},"request_id":{"ref":"Partial_TextOperators_"},"prompt_tokens":{"ref":"Partial_NumberOperators_"},"completion_tokens":{"ref":"Partial_NumberOperators_"},"prompt_cache_read_tokens":{"ref":"Partial_NumberOperators_"},"prompt_cache_write_tokens":{"ref":"Partial_NumberOperators_"},"total_tokens":{"ref":"Partial_NumberOperators_"},"target_url":{"ref":"Partial_TextOperators_"},"properties":{"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"ref":"Partial_TextOperators_"}},"search_properties":{"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"ref":"Partial_TextOperators_"}},"scores":{"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"ref":"Partial_TextOperators_"}},"scores_column":{"ref":"Partial_TextOperators_"},"request_body":{"ref":"Partial_VectorOperators_"},"response_body":{"ref":"Partial_VectorOperators_"},"cache_enabled":{"ref":"Partial_BooleanOperators_"},"cache_reference_id":{"ref":"Partial_TextOperators_"},"assets":{"ref":"Partial_TextOperators_"},"helicone-score-feedback":{"ref":"Partial_BooleanOperators_"}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Pick_FilterLeaf.users_view-or-request_response_rmt_": {
@@ -594,110 +592,6 @@ const models: TsoaRoute.Models = {
         "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_EvaluatorStats_"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Prompt2025": {
-        "dataType": "refObject",
-        "properties": {
-            "id": {"dataType":"string","required":true},
-            "name": {"dataType":"string","required":true},
-            "tags": {"dataType":"array","array":{"dataType":"string"},"required":true},
-            "created_at": {"dataType":"string","required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_Prompt2025_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"ref":"Prompt2025","required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_Prompt2025.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_Prompt2025_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_string-Array_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"dataType":"array","array":{"dataType":"string"},"required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_string-Array.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_string-Array_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "PromptCreateResponse": {
-        "dataType": "refObject",
-        "properties": {
-            "id": {"dataType":"string","required":true},
-            "versionId": {"dataType":"string","required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_PromptCreateResponse_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"ref":"PromptCreateResponse","required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_PromptCreateResponse.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_PromptCreateResponse_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Record_string.number_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"dataType":"double"},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "OpenAIChatRequest": {
-        "dataType": "refObject",
-        "properties": {
-            "model": {"dataType":"string"},
-            "messages": {"dataType":"array","array":{"dataType":"nestedObjectLiteral","nestedProperties":{"tool_calls":{"dataType":"array","array":{"dataType":"nestedObjectLiteral","nestedProperties":{"type":{"dataType":"enum","enums":["function"],"required":true},"function":{"dataType":"nestedObjectLiteral","nestedProperties":{"arguments":{"dataType":"string","required":true},"name":{"dataType":"string","required":true}},"required":true},"id":{"dataType":"string","required":true}}}},"tool_call_id":{"dataType":"string"},"name":{"dataType":"string"},"content":{"dataType":"union","subSchemas":[{"dataType":"string"},{"dataType":"array","array":{"dataType":"nestedObjectLiteral","nestedProperties":{"image_url":{"dataType":"nestedObjectLiteral","nestedProperties":{"url":{"dataType":"string","required":true}}},"text":{"dataType":"string"},"type":{"dataType":"string","required":true}}}},{"dataType":"enum","enums":[null]}],"required":true},"role":{"dataType":"string","required":true}}}},
-            "temperature": {"dataType":"double"},
-            "top_p": {"dataType":"double"},
-            "max_tokens": {"dataType":"double"},
-            "max_completion_tokens": {"dataType":"double"},
-            "stream": {"dataType":"boolean"},
-            "stop": {"dataType":"union","subSchemas":[{"dataType":"array","array":{"dataType":"string"}},{"dataType":"string"}]},
-            "tools": {"dataType":"array","array":{"dataType":"nestedObjectLiteral","nestedProperties":{"function":{"dataType":"nestedObjectLiteral","nestedProperties":{"parameters":{"ref":"Record_string.any_","required":true},"description":{"dataType":"string","required":true},"name":{"dataType":"string","required":true}},"required":true},"type":{"dataType":"enum","enums":["function"],"required":true}}}},
-            "tool_choice": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["none"]},{"dataType":"enum","enums":["auto"]},{"dataType":"enum","enums":["required"]},{"dataType":"nestedObjectLiteral","nestedProperties":{"function":{"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string","required":true},"type":{"dataType":"enum","enums":["function"],"required":true}}},"type":{"dataType":"string","required":true}}}]},
-            "parallel_tool_calls": {"dataType":"boolean"},
-            "reasoning_effort": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["low"]},{"dataType":"enum","enums":["medium"]},{"dataType":"enum","enums":["high"]}]},
-            "frequency_penalty": {"dataType":"double"},
-            "presence_penalty": {"dataType":"double"},
-            "logit_bias": {"ref":"Record_string.number_"},
-            "logprobs": {"dataType":"boolean"},
-            "top_logprobs": {"dataType":"double"},
-            "n": {"dataType":"double"},
-            "modalities": {"dataType":"array","array":{"dataType":"string"}},
-            "prediction": {"dataType":"any"},
-            "audio": {"dataType":"any"},
-            "response_format": {"dataType":"nestedObjectLiteral","nestedProperties":{"json_schema":{"dataType":"any"},"type":{"dataType":"string","required":true}}},
-            "seed": {"dataType":"double"},
-            "service_tier": {"dataType":"string"},
-            "store": {"dataType":"boolean"},
-            "stream_options": {"dataType":"any"},
-            "metadata": {"ref":"Record_string.string_"},
-            "user": {"dataType":"string"},
-            "function_call": {"dataType":"union","subSchemas":[{"dataType":"string"},{"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string","required":true}}}]},
-            "functions": {"dataType":"array","array":{"dataType":"any"}},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ResultSuccess_number_": {
         "dataType": "refObject",
         "properties": {
@@ -710,86 +604,6 @@ const models: TsoaRoute.Models = {
     "Result_number.string_": {
         "dataType": "refAlias",
         "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_number_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_Prompt2025-Array_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"dataType":"array","array":{"dataType":"refObject","ref":"Prompt2025"},"required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_Prompt2025-Array.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_Prompt2025-Array_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Prompt2025Version": {
-        "dataType": "refObject",
-        "properties": {
-            "id": {"dataType":"string","required":true},
-            "model": {"dataType":"string","required":true},
-            "prompt_id": {"dataType":"string","required":true},
-            "major_version": {"dataType":"double","required":true},
-            "minor_version": {"dataType":"double","required":true},
-            "commit_message": {"dataType":"string","required":true},
-            "created_at": {"dataType":"string","required":true},
-            "s3_url": {"dataType":"string"},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_Prompt2025Version_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"ref":"Prompt2025Version","required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_Prompt2025Version.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_Prompt2025Version_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_Prompt2025Version-Array_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"dataType":"array","array":{"dataType":"refObject","ref":"Prompt2025Version"},"required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_Prompt2025Version-Array.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_Prompt2025Version-Array_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "PromptVersionCounts": {
-        "dataType": "refObject",
-        "properties": {
-            "totalVersions": {"dataType":"double","required":true},
-            "majorVersions": {"dataType":"double","required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_PromptVersionCounts_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"ref":"PromptVersionCounts","required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_PromptVersionCounts.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_PromptVersionCounts_"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Partial_ResponseTableToOperators_": {
@@ -877,7 +691,7 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ProviderName": {
         "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["OPENAI"]},{"dataType":"enum","enums":["ANTHROPIC"]},{"dataType":"enum","enums":["AZURE"]},{"dataType":"enum","enums":["LOCAL"]},{"dataType":"enum","enums":["HELICONE"]},{"dataType":"enum","enums":["AMDBARTEK"]},{"dataType":"enum","enums":["ANYSCALE"]},{"dataType":"enum","enums":["CLOUDFLARE"]},{"dataType":"enum","enums":["2YFV"]},{"dataType":"enum","enums":["TOGETHER"]},{"dataType":"enum","enums":["LEMONFOX"]},{"dataType":"enum","enums":["FIREWORKS"]},{"dataType":"enum","enums":["PERPLEXITY"]},{"dataType":"enum","enums":["GOOGLE"]},{"dataType":"enum","enums":["OPENROUTER"]},{"dataType":"enum","enums":["WISDOMINANUTSHELL"]},{"dataType":"enum","enums":["GROQ"]},{"dataType":"enum","enums":["COHERE"]},{"dataType":"enum","enums":["MISTRAL"]},{"dataType":"enum","enums":["DEEPINFRA"]},{"dataType":"enum","enums":["QSTASH"]},{"dataType":"enum","enums":["FIRECRAWL"]},{"dataType":"enum","enums":["AWS"]},{"dataType":"enum","enums":["DEEPSEEK"]},{"dataType":"enum","enums":["X"]},{"dataType":"enum","enums":["AVIAN"]},{"dataType":"enum","enums":["NEBIUS"]},{"dataType":"enum","enums":["NOVITA"]},{"dataType":"enum","enums":["OPENPIPE"]},{"dataType":"enum","enums":["LLAMA"]}],"validators":{}},
+        "type": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["OPENAI"]},{"dataType":"enum","enums":["ANTHROPIC"]},{"dataType":"enum","enums":["AZURE"]},{"dataType":"enum","enums":["LOCAL"]},{"dataType":"enum","enums":["HELICONE"]},{"dataType":"enum","enums":["AMDBARTEK"]},{"dataType":"enum","enums":["ANYSCALE"]},{"dataType":"enum","enums":["CLOUDFLARE"]},{"dataType":"enum","enums":["2YFV"]},{"dataType":"enum","enums":["TOGETHER"]},{"dataType":"enum","enums":["LEMONFOX"]},{"dataType":"enum","enums":["FIREWORKS"]},{"dataType":"enum","enums":["PERPLEXITY"]},{"dataType":"enum","enums":["GOOGLE"]},{"dataType":"enum","enums":["OPENROUTER"]},{"dataType":"enum","enums":["WISDOMINANUTSHELL"]},{"dataType":"enum","enums":["GROQ"]},{"dataType":"enum","enums":["COHERE"]},{"dataType":"enum","enums":["MISTRAL"]},{"dataType":"enum","enums":["DEEPINFRA"]},{"dataType":"enum","enums":["QSTASH"]},{"dataType":"enum","enums":["FIRECRAWL"]},{"dataType":"enum","enums":["AWS"]},{"dataType":"enum","enums":["DEEPSEEK"]},{"dataType":"enum","enums":["X"]},{"dataType":"enum","enums":["AVIAN"]},{"dataType":"enum","enums":["NEBIUS"]},{"dataType":"enum","enums":["NOVITA"]}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Provider": {
@@ -990,6 +804,11 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Record_string.number_": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"dataType":"double"},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "HeliconeRequest": {
         "dataType": "refObject",
         "properties": {
@@ -1036,8 +855,6 @@ const models: TsoaRoute.Models = {
             "cache_reference_id": {"dataType":"union","subSchemas":[{"dataType":"string"},{"dataType":"enum","enums":[null]}],"required":true},
             "cache_enabled": {"dataType":"boolean","required":true},
             "updated_at": {"dataType":"string"},
-            "gateway_router_id": {"dataType":"union","subSchemas":[{"dataType":"string"},{"dataType":"enum","enums":[null]}]},
-            "gateway_deployment_target": {"dataType":"union","subSchemas":[{"dataType":"string"},{"dataType":"enum","enums":[null]}]},
         },
         "additionalProperties": false,
     },
@@ -1108,20 +925,6 @@ const models: TsoaRoute.Models = {
             "scores": {"ref":"Scores","required":true},
         },
         "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess__hasPrompts-boolean__": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"dataType":"nestedObjectLiteral","nestedProperties":{"hasPrompts":{"dataType":"boolean","required":true}},"required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result__hasPrompts-boolean_.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess__hasPrompts-boolean__"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "PromptsResult": {
@@ -1621,6 +1424,20 @@ const models: TsoaRoute.Models = {
     "Result_ExperimentV2PromptVersion-Array.string_": {
         "dataType": "refAlias",
         "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_ExperimentV2PromptVersion-Array_"},{"ref":"ResultError_string_"}],"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ResultSuccess_string-Array_": {
+        "dataType": "refObject",
+        "properties": {
+            "data": {"dataType":"array","array":{"dataType":"string"},"required":true},
+            "error": {"dataType":"enum","enums":[null],"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Result_string-Array.string_": {
+        "dataType": "refAlias",
+        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_string-Array_"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ResultSuccess_string_": {
@@ -2197,6 +2014,43 @@ const models: TsoaRoute.Models = {
         "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_ChatCompletion-or-_content-string--reasoning-string--calls-any__"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "OpenAIChatRequest": {
+        "dataType": "refObject",
+        "properties": {
+            "model": {"dataType":"string"},
+            "messages": {"dataType":"array","array":{"dataType":"nestedObjectLiteral","nestedProperties":{"tool_calls":{"dataType":"array","array":{"dataType":"nestedObjectLiteral","nestedProperties":{"type":{"dataType":"enum","enums":["function"],"required":true},"function":{"dataType":"nestedObjectLiteral","nestedProperties":{"arguments":{"dataType":"string","required":true},"name":{"dataType":"string","required":true}},"required":true},"id":{"dataType":"string","required":true}}}},"tool_call_id":{"dataType":"string"},"name":{"dataType":"string"},"content":{"dataType":"union","subSchemas":[{"dataType":"string"},{"dataType":"array","array":{"dataType":"nestedObjectLiteral","nestedProperties":{"image_url":{"dataType":"nestedObjectLiteral","nestedProperties":{"url":{"dataType":"string","required":true}}},"text":{"dataType":"string"},"type":{"dataType":"string","required":true}}}},{"dataType":"enum","enums":[null]}],"required":true},"role":{"dataType":"string","required":true}}}},
+            "temperature": {"dataType":"double"},
+            "top_p": {"dataType":"double"},
+            "max_tokens": {"dataType":"double"},
+            "max_completion_tokens": {"dataType":"double"},
+            "stream": {"dataType":"boolean"},
+            "stop": {"dataType":"union","subSchemas":[{"dataType":"array","array":{"dataType":"string"}},{"dataType":"string"}]},
+            "tools": {"dataType":"array","array":{"dataType":"nestedObjectLiteral","nestedProperties":{"function":{"dataType":"nestedObjectLiteral","nestedProperties":{"parameters":{"ref":"Record_string.any_","required":true},"description":{"dataType":"string","required":true},"name":{"dataType":"string","required":true}},"required":true},"type":{"dataType":"enum","enums":["function"],"required":true}}}},
+            "tool_choice": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["none"]},{"dataType":"enum","enums":["auto"]},{"dataType":"enum","enums":["required"]},{"dataType":"nestedObjectLiteral","nestedProperties":{"function":{"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string","required":true},"type":{"dataType":"enum","enums":["function"],"required":true}}},"type":{"dataType":"string","required":true}}}]},
+            "parallel_tool_calls": {"dataType":"boolean"},
+            "reasoning_effort": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["low"]},{"dataType":"enum","enums":["medium"]},{"dataType":"enum","enums":["high"]}]},
+            "frequency_penalty": {"dataType":"double"},
+            "presence_penalty": {"dataType":"double"},
+            "logit_bias": {"ref":"Record_string.number_"},
+            "logprobs": {"dataType":"boolean"},
+            "top_logprobs": {"dataType":"double"},
+            "n": {"dataType":"double"},
+            "modalities": {"dataType":"array","array":{"dataType":"string"}},
+            "prediction": {"dataType":"any"},
+            "audio": {"dataType":"any"},
+            "response_format": {"dataType":"nestedObjectLiteral","nestedProperties":{"json_schema":{"dataType":"any"},"type":{"dataType":"string","required":true}}},
+            "seed": {"dataType":"double"},
+            "service_tier": {"dataType":"string"},
+            "store": {"dataType":"boolean"},
+            "stream_options": {"dataType":"any"},
+            "metadata": {"ref":"Record_string.string_"},
+            "user": {"dataType":"string"},
+            "function_call": {"dataType":"union","subSchemas":[{"dataType":"string"},{"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string","required":true}}}]},
+            "functions": {"dataType":"array","array":{"dataType":"any"}},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ResultSuccess__apiKey-string__": {
         "dataType": "refObject",
         "properties": {
@@ -2438,23 +2292,18 @@ const models: TsoaRoute.Models = {
         "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_ClickHouseTableSchema-Array_"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ExecuteSqlResponse": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"rowCount":{"dataType":"double","required":true},"size":{"dataType":"double","required":true},"elapsedMilliseconds":{"dataType":"double","required":true},"rows":{"dataType":"array","array":{"dataType":"refAlias","ref":"Record_string.any_"},"required":true}},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_ExecuteSqlResponse_": {
+    "ResultSuccess_Array_Record_string.any___": {
         "dataType": "refObject",
         "properties": {
-            "data": {"ref":"ExecuteSqlResponse","required":true},
+            "data": {"dataType":"array","array":{"dataType":"refAlias","ref":"Record_string.any_"},"required":true},
             "error": {"dataType":"enum","enums":[null],"required":true},
         },
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_ExecuteSqlResponse.string_": {
+    "Result_Array_Record_string.any__.string_": {
         "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_ExecuteSqlResponse_"},{"ref":"ResultError_string_"}],"validators":{}},
+        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_Array_Record_string.any___"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ExecuteSqlRequest": {
@@ -2490,34 +2339,6 @@ const models: TsoaRoute.Models = {
     "Result_Array_HqlSavedQuery_.string_": {
         "dataType": "refAlias",
         "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_Array_HqlSavedQuery__"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_HqlSavedQuery-or-null_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"dataType":"union","subSchemas":[{"ref":"HqlSavedQuery"},{"dataType":"enum","enums":[null]}],"required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_HqlSavedQuery-or-null.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_HqlSavedQuery-or-null_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_void_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"dataType":"void","required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_void.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_void_"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ResultSuccess_HqlSavedQuery-Array_": {
@@ -3034,28 +2855,28 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Router": {
+    "RouterConfig": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"lastUpdatedAt":{"dataType":"string","required":true},"latestVersion":{"dataType":"string","required":true},"name":{"dataType":"string","required":true},"hash":{"dataType":"string","required":true},"id":{"dataType":"string","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"lastUpdatedAt":{"dataType":"string","required":true},"latestVersion":{"dataType":"string","required":true},"name":{"dataType":"string","required":true},"id":{"dataType":"string","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess__routers-Router-Array__": {
+    "ResultSuccess__routerConfigs-RouterConfig-Array__": {
         "dataType": "refObject",
         "properties": {
-            "data": {"dataType":"nestedObjectLiteral","nestedProperties":{"routers":{"dataType":"array","array":{"dataType":"refAlias","ref":"Router"},"required":true}},"required":true},
+            "data": {"dataType":"nestedObjectLiteral","nestedProperties":{"routerConfigs":{"dataType":"array","array":{"dataType":"refAlias","ref":"RouterConfig"},"required":true}},"required":true},
             "error": {"dataType":"enum","enums":[null],"required":true},
         },
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result__routers-Router-Array_.string_": {
+    "Result__routerConfigs-RouterConfig-Array_.string_": {
         "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess__routers-Router-Array__"},{"ref":"ResultError_string_"}],"validators":{}},
+        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess__routerConfigs-RouterConfig-Array__"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "LatestRouterConfig": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"config":{"dataType":"string","required":true},"version":{"dataType":"string","required":true},"hash":{"dataType":"string","required":true},"name":{"dataType":"string","required":true},"id":{"dataType":"string","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"config":{"dataType":"string","required":true},"version":{"dataType":"string","required":true},"name":{"dataType":"string","required":true},"id":{"dataType":"string","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ResultSuccess_LatestRouterConfig_": {
@@ -3072,80 +2893,23 @@ const models: TsoaRoute.Models = {
         "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_LatestRouterConfig_"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "RouterRequestsOverTime": {
+    "CreateRouterConfigResult": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"status":{"dataType":"double","required":true},"count":{"dataType":"double","required":true},"time":{"dataType":"datetime","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"apiKey":{"dataType":"string","required":true},"routerVersionId":{"dataType":"string","required":true},"routerConfigId":{"dataType":"string","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_RouterRequestsOverTime-Array_": {
+    "ResultSuccess_CreateRouterConfigResult_": {
         "dataType": "refObject",
         "properties": {
-            "data": {"dataType":"array","array":{"dataType":"refAlias","ref":"RouterRequestsOverTime"},"required":true},
+            "data": {"ref":"CreateRouterConfigResult","required":true},
             "error": {"dataType":"enum","enums":[null],"required":true},
         },
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_RouterRequestsOverTime-Array.string_": {
+    "Result_CreateRouterConfigResult.string_": {
         "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_RouterRequestsOverTime-Array_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "RouterCostOverTime": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"cost":{"dataType":"double","required":true},"time":{"dataType":"datetime","required":true}},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_RouterCostOverTime-Array_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"dataType":"array","array":{"dataType":"refAlias","ref":"RouterCostOverTime"},"required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_RouterCostOverTime-Array.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_RouterCostOverTime-Array_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "RouterLatencyOverTime": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"duration":{"dataType":"double","required":true},"time":{"dataType":"datetime","required":true}},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_RouterLatencyOverTime-Array_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"dataType":"array","array":{"dataType":"refAlias","ref":"RouterLatencyOverTime"},"required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_RouterLatencyOverTime-Array.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_RouterLatencyOverTime-Array_"},{"ref":"ResultError_string_"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "CreateRouterResult": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"routerVersionId":{"dataType":"string","required":true},"routerHash":{"dataType":"string","required":true},"routerId":{"dataType":"string","required":true}},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultSuccess_CreateRouterResult_": {
-        "dataType": "refObject",
-        "properties": {
-            "data": {"ref":"CreateRouterResult","required":true},
-            "error": {"dataType":"enum","enums":[null],"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Result_CreateRouterResult.string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_CreateRouterResult_"},{"ref":"ResultError_string_"}],"validators":{}},
+        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_CreateRouterConfigResult_"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Eval": {
@@ -3285,12 +3049,12 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ModelName": {
         "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["gpt-3.5"]},{"dataType":"enum","enums":["gpt-4o"]},{"dataType":"enum","enums":["gpt-4o-mini"]},{"dataType":"enum","enums":["gpt-4"]},{"dataType":"enum","enums":["gpt-4-turbo"]},{"dataType":"enum","enums":["claude-3-opus"]},{"dataType":"enum","enums":["claude-3-sonnet"]},{"dataType":"enum","enums":["claude-3-haiku"]},{"dataType":"enum","enums":["claude-2"]},{"dataType":"enum","enums":["open-mixtral"]},{"dataType":"enum","enums":["dall-e"]},{"dataType":"enum","enums":["text-moderation"]},{"dataType":"enum","enums":["text-embedding"]},{"dataType":"enum","enums":["anthropic/claude-3.5-sonnet"]}],"validators":{}},
+        "type": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["gpt-3.5"]},{"dataType":"enum","enums":["gpt-4o"]},{"dataType":"enum","enums":["gpt-4o-mini"]},{"dataType":"enum","enums":["gpt-4"]},{"dataType":"enum","enums":["gpt-4-turbo"]},{"dataType":"enum","enums":["claude-3-opus"]},{"dataType":"enum","enums":["claude-3-sonnet"]},{"dataType":"enum","enums":["claude-3-haiku"]},{"dataType":"enum","enums":["claude-2"]},{"dataType":"enum","enums":["open-mixtral"]},{"dataType":"enum","enums":["Llama"]},{"dataType":"enum","enums":["dall-e"]},{"dataType":"enum","enums":["text-moderation"]},{"dataType":"enum","enums":["text-embedding"]},{"dataType":"enum","enums":["anthropic/claude-3.5-sonnet"]}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "OpenStatsProviderName": {
         "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["OPENAI"]},{"dataType":"enum","enums":["ANTHROPIC"]},{"dataType":"enum","enums":["OPENROUTER"]},{"dataType":"enum","enums":["MISTRAL"]}],"validators":{}},
+        "type": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["OPENAI"]},{"dataType":"enum","enums":["ANTHROPIC"]},{"dataType":"enum","enums":["OPENROUTER"]},{"dataType":"enum","enums":["MISTRAL"]},{"dataType":"enum","enums":["META"]}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "DataIsBeautifulRequestBody": {
@@ -3441,6 +3205,20 @@ const models: TsoaRoute.Models = {
     "Result__api_key_hash-string--api_key_name-string--created_at-string--governance-boolean--id-number--key_permissions-string--organization_id-string--soft_delete-boolean--temp_key-boolean--user_id-string_-Array.string_": {
         "dataType": "refAlias",
         "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess__api_key_hash-string--api_key_name-string--created_at-string--governance-boolean--id-number--key_permissions-string--organization_id-string--soft_delete-boolean--temp_key-boolean--user_id-string_-Array_"},{"ref":"ResultError_string_"}],"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ResultSuccess_void_": {
+        "dataType": "refObject",
+        "properties": {
+            "data": {"dataType":"void","required":true},
+            "error": {"dataType":"enum","enums":[null],"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Result_void.string_": {
+        "dataType": "refAlias",
+        "type": {"dataType":"union","subSchemas":[{"ref":"ResultSuccess_void_"},{"ref":"ResultError_string_"}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ResultSuccess__id-number--active-boolean--title-string--message-string--created_at-string--updated_at-string_-Array_": {
@@ -4243,421 +4021,6 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_getPrompt2025: Record<string, TsoaRoute.ParameterSchema> = {
-                promptId: {"in":"path","name":"promptId","required":true,"dataType":"string"},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.get('/v1/prompt-2025/id/:promptId',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.getPrompt2025)),
-
-            async function Prompt2025Controller_getPrompt2025(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_getPrompt2025, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'getPrompt2025',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_deletePrompt2025: Record<string, TsoaRoute.ParameterSchema> = {
-                promptId: {"in":"path","name":"promptId","required":true,"dataType":"string"},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.delete('/v1/prompt-2025/:promptId',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.deletePrompt2025)),
-
-            async function Prompt2025Controller_deletePrompt2025(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_deletePrompt2025, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'deletePrompt2025',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_deletePrompt2025Version: Record<string, TsoaRoute.ParameterSchema> = {
-                promptId: {"in":"path","name":"promptId","required":true,"dataType":"string"},
-                versionId: {"in":"path","name":"versionId","required":true,"dataType":"string"},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.delete('/v1/prompt-2025/:promptId/:versionId',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.deletePrompt2025Version)),
-
-            async function Prompt2025Controller_deletePrompt2025Version(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_deletePrompt2025Version, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'deletePrompt2025Version',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_getPrompt2025Tags: Record<string, TsoaRoute.ParameterSchema> = {
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.get('/v1/prompt-2025/tags',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.getPrompt2025Tags)),
-
-            async function Prompt2025Controller_getPrompt2025Tags(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_getPrompt2025Tags, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'getPrompt2025Tags',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_createPrompt2025: Record<string, TsoaRoute.ParameterSchema> = {
-                requestBody: {"in":"body","name":"requestBody","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"promptBody":{"ref":"OpenAIChatRequest","required":true},"tags":{"dataType":"array","array":{"dataType":"string"},"required":true},"name":{"dataType":"string","required":true}}},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.post('/v1/prompt-2025',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.createPrompt2025)),
-
-            async function Prompt2025Controller_createPrompt2025(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_createPrompt2025, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'createPrompt2025',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_updatePrompt2025: Record<string, TsoaRoute.ParameterSchema> = {
-                requestBody: {"in":"body","name":"requestBody","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"promptBody":{"ref":"OpenAIChatRequest","required":true},"commitMessage":{"dataType":"string","required":true},"setAsProduction":{"dataType":"boolean","required":true},"newMajorVersion":{"dataType":"boolean","required":true},"promptVersionId":{"dataType":"string","required":true},"promptId":{"dataType":"string","required":true}}},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.post('/v1/prompt-2025/update',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.updatePrompt2025)),
-
-            async function Prompt2025Controller_updatePrompt2025(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_updatePrompt2025, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'updatePrompt2025',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_setProductionVersion: Record<string, TsoaRoute.ParameterSchema> = {
-                requestBody: {"in":"body","name":"requestBody","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"promptVersionId":{"dataType":"string","required":true},"promptId":{"dataType":"string","required":true}}},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.post('/v1/prompt-2025/update/production-version',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.setProductionVersion)),
-
-            async function Prompt2025Controller_setProductionVersion(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_setProductionVersion, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'setProductionVersion',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_getPrompt2025Count: Record<string, TsoaRoute.ParameterSchema> = {
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.get('/v1/prompt-2025/count',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.getPrompt2025Count)),
-
-            async function Prompt2025Controller_getPrompt2025Count(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_getPrompt2025Count, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'getPrompt2025Count',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_getPrompts2025: Record<string, TsoaRoute.ParameterSchema> = {
-                requestBody: {"in":"body","name":"requestBody","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"pageSize":{"dataType":"double","required":true},"page":{"dataType":"double","required":true},"tagsFilter":{"dataType":"array","array":{"dataType":"string"},"required":true},"search":{"dataType":"string","required":true}}},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.post('/v1/prompt-2025/query',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.getPrompts2025)),
-
-            async function Prompt2025Controller_getPrompts2025(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_getPrompts2025, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'getPrompts2025',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_getPrompt2025Version: Record<string, TsoaRoute.ParameterSchema> = {
-                requestBody: {"in":"body","name":"requestBody","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"promptVersionId":{"dataType":"string","required":true}}},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.post('/v1/prompt-2025/query/version',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.getPrompt2025Version)),
-
-            async function Prompt2025Controller_getPrompt2025Version(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_getPrompt2025Version, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'getPrompt2025Version',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_getPrompt2025Versions: Record<string, TsoaRoute.ParameterSchema> = {
-                requestBody: {"in":"body","name":"requestBody","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"majorVersion":{"dataType":"double"},"promptId":{"dataType":"string","required":true}}},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.post('/v1/prompt-2025/query/versions',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.getPrompt2025Versions)),
-
-            async function Prompt2025Controller_getPrompt2025Versions(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_getPrompt2025Versions, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'getPrompt2025Versions',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_getPrompt2025ProductionVersion: Record<string, TsoaRoute.ParameterSchema> = {
-                requestBody: {"in":"body","name":"requestBody","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"promptId":{"dataType":"string","required":true}}},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.post('/v1/prompt-2025/query/production-version',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.getPrompt2025ProductionVersion)),
-
-            async function Prompt2025Controller_getPrompt2025ProductionVersion(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_getPrompt2025ProductionVersion, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'getPrompt2025ProductionVersion',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPrompt2025Controller_getPrompt2025TotalVersions: Record<string, TsoaRoute.ParameterSchema> = {
-                requestBody: {"in":"body","name":"requestBody","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"promptId":{"dataType":"string","required":true}}},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.post('/v1/prompt-2025/query/total-versions',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller)),
-            ...(fetchMiddlewares<RequestHandler>(Prompt2025Controller.prototype.getPrompt2025TotalVersions)),
-
-            async function Prompt2025Controller_getPrompt2025TotalVersions(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPrompt2025Controller_getPrompt2025TotalVersions, request, response });
-
-                const controller = new Prompt2025Controller();
-
-              await templateService.apiHandler({
-                methodName: 'getPrompt2025TotalVersions',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         const argsRequestController_getRequestCount: Record<string, TsoaRoute.ParameterSchema> = {
                 requestBody: {"in":"body","name":"requestBody","required":true,"ref":"RequestQueryParams"},
                 request: {"in":"request","name":"request","required":true,"dataType":"object"},
@@ -4940,37 +4303,6 @@ export function RegisterRoutes(app: Router) {
 
               await templateService.apiHandler({
                 methodName: 'addScores',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsPromptController_hasPrompts: Record<string, TsoaRoute.ParameterSchema> = {
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.get('/v1/prompt/has-prompts',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(PromptController)),
-            ...(fetchMiddlewares<RequestHandler>(PromptController.prototype.hasPrompts)),
-
-            async function PromptController_hasPrompts(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsPromptController_hasPrompts, request, response });
-
-                const controller = new PromptController();
-
-              await templateService.apiHandler({
-                methodName: 'hasPrompts',
                 controller,
                 response,
                 next,
@@ -8027,37 +7359,6 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsHeliconeSqlController_downloadCsv: Record<string, TsoaRoute.ParameterSchema> = {
-                requestBody: {"in":"body","name":"requestBody","required":true,"ref":"ExecuteSqlRequest"},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.post('/v1/helicone-sql/download',
-            ...(fetchMiddlewares<RequestHandler>(HeliconeSqlController)),
-            ...(fetchMiddlewares<RequestHandler>(HeliconeSqlController.prototype.downloadCsv)),
-
-            async function HeliconeSqlController_downloadCsv(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsHeliconeSqlController_downloadCsv, request, response });
-
-                const controller = new HeliconeSqlController();
-
-              await templateService.apiHandler({
-                methodName: 'downloadCsv',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         const argsHeliconeSqlController_getSavedQueries: Record<string, TsoaRoute.ParameterSchema> = {
                 request: {"in":"request","name":"request","required":true,"dataType":"object"},
         };
@@ -8077,68 +7378,6 @@ export function RegisterRoutes(app: Router) {
 
               await templateService.apiHandler({
                 methodName: 'getSavedQueries',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsHeliconeSqlController_getSavedQuery: Record<string, TsoaRoute.ParameterSchema> = {
-                queryId: {"in":"path","name":"queryId","required":true,"dataType":"string"},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.get('/v1/helicone-sql/saved-query/:queryId',
-            ...(fetchMiddlewares<RequestHandler>(HeliconeSqlController)),
-            ...(fetchMiddlewares<RequestHandler>(HeliconeSqlController.prototype.getSavedQuery)),
-
-            async function HeliconeSqlController_getSavedQuery(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsHeliconeSqlController_getSavedQuery, request, response });
-
-                const controller = new HeliconeSqlController();
-
-              await templateService.apiHandler({
-                methodName: 'getSavedQuery',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsHeliconeSqlController_deleteSavedQuery: Record<string, TsoaRoute.ParameterSchema> = {
-                queryId: {"in":"path","name":"queryId","required":true,"dataType":"string"},
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-        };
-        app.delete('/v1/helicone-sql/saved-query/:queryId',
-            ...(fetchMiddlewares<RequestHandler>(HeliconeSqlController)),
-            ...(fetchMiddlewares<RequestHandler>(HeliconeSqlController.prototype.deleteSavedQuery)),
-
-            async function HeliconeSqlController_deleteSavedQuery(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsHeliconeSqlController_deleteSavedQuery, request, response });
-
-                const controller = new HeliconeSqlController();
-
-              await templateService.apiHandler({
-                methodName: 'deleteSavedQuery',
                 controller,
                 response,
                 next,
@@ -9314,26 +8553,26 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsGatewayController_getRouters: Record<string, TsoaRoute.ParameterSchema> = {
+        const argsGatewayController_getRouterConfigs: Record<string, TsoaRoute.ParameterSchema> = {
                 request: {"in":"request","name":"request","required":true,"dataType":"object"},
         };
         app.get('/v1/gateway',
             authenticateMiddleware([{"api_key":[]}]),
             ...(fetchMiddlewares<RequestHandler>(GatewayController)),
-            ...(fetchMiddlewares<RequestHandler>(GatewayController.prototype.getRouters)),
+            ...(fetchMiddlewares<RequestHandler>(GatewayController.prototype.getRouterConfigs)),
 
-            async function GatewayController_getRouters(request: ExRequest, response: ExResponse, next: any) {
+            async function GatewayController_getRouterConfigs(request: ExRequest, response: ExResponse, next: any) {
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
             let validatedArgs: any[] = [];
             try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsGatewayController_getRouters, request, response });
+                validatedArgs = templateService.getValidatedArgs({ args: argsGatewayController_getRouterConfigs, request, response });
 
                 const controller = new GatewayController();
 
               await templateService.apiHandler({
-                methodName: 'getRouters',
+                methodName: 'getRouterConfigs',
                 controller,
                 response,
                 next,
@@ -9377,123 +8616,27 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsGatewayController_getRouterRequestsOverTime: Record<string, TsoaRoute.ParameterSchema> = {
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-                routerHash: {"in":"path","name":"routerHash","required":true,"dataType":"string"},
-        };
-        app.get('/v1/gateway/:routerHash/requests-over-time',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(GatewayController)),
-            ...(fetchMiddlewares<RequestHandler>(GatewayController.prototype.getRouterRequestsOverTime)),
-
-            async function GatewayController_getRouterRequestsOverTime(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsGatewayController_getRouterRequestsOverTime, request, response });
-
-                const controller = new GatewayController();
-
-              await templateService.apiHandler({
-                methodName: 'getRouterRequestsOverTime',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsGatewayController_getRouterCostOverTime: Record<string, TsoaRoute.ParameterSchema> = {
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-                routerHash: {"in":"path","name":"routerHash","required":true,"dataType":"string"},
-        };
-        app.get('/v1/gateway/:routerHash/cost-over-time',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(GatewayController)),
-            ...(fetchMiddlewares<RequestHandler>(GatewayController.prototype.getRouterCostOverTime)),
-
-            async function GatewayController_getRouterCostOverTime(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsGatewayController_getRouterCostOverTime, request, response });
-
-                const controller = new GatewayController();
-
-              await templateService.apiHandler({
-                methodName: 'getRouterCostOverTime',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsGatewayController_getRouterLatencyOverTime: Record<string, TsoaRoute.ParameterSchema> = {
-                request: {"in":"request","name":"request","required":true,"dataType":"object"},
-                routerHash: {"in":"path","name":"routerHash","required":true,"dataType":"string"},
-        };
-        app.get('/v1/gateway/:routerHash/latency-over-time',
-            authenticateMiddleware([{"api_key":[]}]),
-            ...(fetchMiddlewares<RequestHandler>(GatewayController)),
-            ...(fetchMiddlewares<RequestHandler>(GatewayController.prototype.getRouterLatencyOverTime)),
-
-            async function GatewayController_getRouterLatencyOverTime(request: ExRequest, response: ExResponse, next: any) {
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsGatewayController_getRouterLatencyOverTime, request, response });
-
-                const controller = new GatewayController();
-
-              await templateService.apiHandler({
-                methodName: 'getRouterLatencyOverTime',
-                controller,
-                response,
-                next,
-                validatedArgs,
-                successStatus: undefined,
-              });
-            } catch (err) {
-                return next(err);
-            }
-        });
-        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsGatewayController_createRouter: Record<string, TsoaRoute.ParameterSchema> = {
+        const argsGatewayController_createRouterConfig: Record<string, TsoaRoute.ParameterSchema> = {
                 request: {"in":"request","name":"request","required":true,"dataType":"object"},
                 body: {"in":"body","name":"body","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"config":{"dataType":"string","required":true},"name":{"dataType":"string","required":true}}},
         };
         app.post('/v1/gateway',
             authenticateMiddleware([{"api_key":[]}]),
             ...(fetchMiddlewares<RequestHandler>(GatewayController)),
-            ...(fetchMiddlewares<RequestHandler>(GatewayController.prototype.createRouter)),
+            ...(fetchMiddlewares<RequestHandler>(GatewayController.prototype.createRouterConfig)),
 
-            async function GatewayController_createRouter(request: ExRequest, response: ExResponse, next: any) {
+            async function GatewayController_createRouterConfig(request: ExRequest, response: ExResponse, next: any) {
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
             let validatedArgs: any[] = [];
             try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsGatewayController_createRouter, request, response });
+                validatedArgs = templateService.getValidatedArgs({ args: argsGatewayController_createRouterConfig, request, response });
 
                 const controller = new GatewayController();
 
               await templateService.apiHandler({
-                methodName: 'createRouter',
+                methodName: 'createRouterConfig',
                 controller,
                 response,
                 next,
@@ -9505,7 +8648,7 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsGatewayController_updateRouter: Record<string, TsoaRoute.ParameterSchema> = {
+        const argsGatewayController_updateRouterConfig: Record<string, TsoaRoute.ParameterSchema> = {
                 request: {"in":"request","name":"request","required":true,"dataType":"object"},
                 id: {"in":"path","name":"id","required":true,"dataType":"string"},
                 body: {"in":"body","name":"body","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"config":{"dataType":"string","required":true},"name":{"dataType":"string","required":true}}},
@@ -9513,20 +8656,20 @@ export function RegisterRoutes(app: Router) {
         app.put('/v1/gateway/:id',
             authenticateMiddleware([{"api_key":[]}]),
             ...(fetchMiddlewares<RequestHandler>(GatewayController)),
-            ...(fetchMiddlewares<RequestHandler>(GatewayController.prototype.updateRouter)),
+            ...(fetchMiddlewares<RequestHandler>(GatewayController.prototype.updateRouterConfig)),
 
-            async function GatewayController_updateRouter(request: ExRequest, response: ExResponse, next: any) {
+            async function GatewayController_updateRouterConfig(request: ExRequest, response: ExResponse, next: any) {
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
             let validatedArgs: any[] = [];
             try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsGatewayController_updateRouter, request, response });
+                validatedArgs = templateService.getValidatedArgs({ args: argsGatewayController_updateRouterConfig, request, response });
 
                 const controller = new GatewayController();
 
               await templateService.apiHandler({
-                methodName: 'updateRouter',
+                methodName: 'updateRouterConfig',
                 controller,
                 response,
                 next,

@@ -241,8 +241,6 @@ export interface InsertRequestResponseVersioned {
   request_body: string;
   response_body: string;
   assets: Array<string>;
-  gateway_router_id?: string;
-  gateway_deployment_target?: string;
 }
 
 export type RequestResponseVersioned =
@@ -280,8 +278,6 @@ export interface RequestResponseRMT {
   cache_reference_id?: string;
   cache_enabled: boolean;
   cost: number;
-  gateway_router_id?: string;
-  gateway_deployment_target?: string;
 }
 
 export interface CacheMetricSMT {
