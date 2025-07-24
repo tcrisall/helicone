@@ -52,7 +52,9 @@ export class OpenAIStreamProcessor implements IBodyProcessor {
       .filter((line) => line !== "")
       .filter((line) => !NON_DATA_LINES.includes(line));
 
-    const data = lines.map((line, i) => {
+   const data = lines
+      .filter(line => line !== "data: [DONE]" && line !== "[DONE]")
+      .map((line, i) => {
       try {
         return JSON.parse(line.replace("data:", ""));
       } catch (e) {
